@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EL PERIÓDICO DEL PUEBLO</title>
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Inter:wght@100;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- ===== HEADER ===== -->
@@ -27,34 +27,40 @@
     </nav>
   </header>
 
-  <!-- ===== MANIFIESTO BOX ===== -->
-  <section class="manifesto-box">
-    <div class="manifesto-content">
-      <p class="manifesto-text">
-        <strong>SÓLO PEDIMOS UNOS MINUTOS DE LECTURA.</strong><br><br>
-        Este diario ha sido redactado por gente que simplemente quiere que se la escuche.<br>
-        Lleno de preguntas que consideramos legítimas y un trabajo de investigación particular.<br><br>
-        Somos madres de niños que ya no están, hermanas que perdieron la mitad de sus vidas y afectados del pueblo y voluntarios en general con una tristeza que nos consume lentamente.<br>
-        Cansados de los sesgos políticos y con ganas de respuestas, nos hacemos cuestiones que creemos que nos acercan a la verdad.
-      </p>
+  <!-- ===== MANIFIESTO ROW ===== -->
+  <section class="manifesto-row">
+    <div class="manifesto-title-box">
+      <p>SÓLO PEDIMOS UNOS MINUTOS DE LECTURA</p>
+    </div>
+    <div class="manifesto-scroll-box">
+      <div class="scrolling-text">
+        <p>
+          Este diario ha sido redactado por gente que simplemente quiere que se la escuche. Lleno de preguntas que consideramos legítimas y un trabajo de investigación particular. <strong>Madres de niños que ya no están</strong>, hermanas que perdieron la mitad de sus vidas y afectados del pueblo y voluntarios en general con una tristeza que nos consume lentamente. Cansados de los sesgos políticos y con ganas de respuestas, nos hacemos cuestiones que creemos que nos acercan a la verdad.
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- ===== CONTENIDO PRINCIPAL ===== -->
+  <!-- ===== CONTENIDO PRINCIPAL (Post) ===== -->
   <main class="edition-card" id="main">
-    <header class="edition-header">
-      <h2 class="edition-title">VOLUMEN 01</h2>
-      <time class="edition-date">21 Febrero 2025</time>
-    </header>
-    <section class="edition-description">
-      <p>Investigación sobre la falsificación de fechas en las tumbas de los fallecidos y análisis político transversal a ambos bandos.</p>
-    </section>
-    <section class="edition-actions">
-      <a href="https://drive.google.com/file/d/1veu1ltzCG2eMPGZszYiq1iu6cMNfXUUH/view?usp=drive_link" 
-         class="edition-button filled" target="_blank">Ver</a>
-      <a href="https://drive.google.com/uc?export=download&id=1veu1ltzCG2eMPGZszYiq1iu6cMNfXUUH" 
-         class="edition-button outlined" download>Descargar</a>
-    </section>
+    <div class="post-grid">
+      <div class="video-placeholder"></div>
+      <div class="post-text">
+        <header class="edition-header">
+          <h2 class="edition-title">VOLUMEN 01</h2>
+          <time class="edition-date">21 Febrero 2025</time>
+        </header>
+        <section class="edition-description">
+          <p>Investigación sobre la falsificación de fechas en las tumbas de los fallecidos y análisis político transversal a ambos bandos.</p>
+        </section>
+        <section class="edition-actions">
+          <a href="https://drive.google.com/file/d/1veu1ltzCG2eMPGZszYiq1iu6cMNfXUUH/view?usp=drive_link" 
+             class="edition-button filled" target="_blank">Ver</a>
+          <a href="https://drive.google.com/uc?export=download&id=1veu1ltzCG2eMPGZszYiq1iu6cMNfXUUH" 
+             class="edition-button outlined" download>Descargar</a>
+        </section>
+      </div>
+    </div>
   </main>
 
   <!-- ===== FOOTER ===== -->
