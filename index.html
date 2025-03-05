@@ -11,7 +11,7 @@
   <!-- ===== HEADER ===== -->
   <header class="navbar">
     <div class="brand">
-      <a href="#main" class="home-button">
+      <a href="#posts" class="home-button">
         <h1 class="title">EL PERIÓDICO DEL PUEBLO</h1>
       </a>
       <p class="subtitle">EN BÚSQUEDA DE LA VERDAD POR LA DANA</p>
@@ -22,6 +22,7 @@
         <button class="dropdown-toggle" id="dropdownBtn">Volúmenes ▼</button>
         <ul class="dropdown-menu" id="dropdownMenu">
           <li><a href="volumen01.html" class="dropdown-item">Volumen 01 - 21 Feb 2025</a></li>
+          <li><a href="volumen02.html" class="dropdown-item">Volumen 02 - 22 Feb 2025</a></li>
         </ul>
       </div>
     </nav>
@@ -41,27 +42,55 @@
     </div>
   </section>
 
-  <!-- ===== CONTENIDO PRINCIPAL (Post) ===== -->
-  <main class="edition-card" id="main">
-    <div class="post-grid">
-      <div class="video-placeholder"></div>
-      <div class="post-text">
-        <header class="edition-header">
-          <h2 class="edition-title">VOLUMEN 01</h2>
-          <time class="edition-date">21 Febrero 2025</time>
-        </header>
-        <section class="edition-description">
-          <p>Investigación sobre la falsificación de fechas en las tumbas de los fallecidos y análisis político transversal a ambos bandos.</p>
-        </section>
-        <section class="edition-actions">
-          <a href="https://drive.google.com/file/d/1veu1ltzCG2eMPGZszYiq1iu6cMNfXUUH/view?usp=drive_link" 
-             class="edition-button filled" target="_blank">Ver</a>
-          <a href="https://drive.google.com/uc?export=download&id=1veu1ltzCG2eMPGZszYiq1iu6cMNfXUUH" 
-             class="edition-button outlined" download>Descargar</a>
-        </section>
+  <!-- ===== POSTS CONTAINER ===== -->
+  <section class="posts-container" id="posts">
+    <!-- Post Volumen 01 -->
+    <div class="edition-card">
+      <div class="post-grid">
+        <div class="video-placeholder">
+          <!-- El iframe ocupa todo el contenedor -->
+          <iframe src="https://www.youtube.com/embed/5iU9fgIyoEM" allowfullscreen></iframe>
+        </div>
+        <div class="post-text">
+          <header class="edition-header">
+            <h2 class="edition-title">VOLUMEN 01</h2>
+            <time class="edition-date">21 Febrero 2025</time>
+          </header>
+          <section class="edition-description">
+            <p>Investigación sobre la falsificación de fechas en las tumbas de los fallecidos y análisis político transversal a ambos bandos.</p>
+          </section>
+          <section class="edition-actions">
+            <a href="https://drive.google.com/file/d/1veu1ltzCG2eMPGZszYiq1iu6cMNfXUUH/view?usp=drive_link" 
+               class="edition-button filled" target="_blank">Leer</a>
+            <a href="https://drive.google.com/uc?export=download&id=1veu1ltzCG2eMPGZszYiq1iu6cMNfXUUH" 
+               class="edition-button outlined" download>Descargar</a>
+          </section>
+        </div>
       </div>
     </div>
-  </main>
+    <!-- Post Volumen 02 -->
+    <div class="edition-card">
+      <div class="post-grid">
+        <div class="video-placeholder">
+          <!-- Placeholder para vídeo post 2 -->
+          <div class="video-placeholder-inner"></div>
+        </div>
+        <div class="post-text">
+          <header class="edition-header">
+            <h2 class="edition-title">VOLUMEN 02</h2>
+            <time class="edition-date">22 Febrero 2025</time>
+          </header>
+          <section class="edition-description">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </section>
+          <section class="edition-actions">
+            <a href="volumen02.html" class="edition-button filled" target="_blank">Leer</a>
+            <a href="#" class="edition-button outlined">Descargar</a>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
