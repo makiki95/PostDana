@@ -22,9 +22,12 @@
       <p class="subtitle">EN BÚSQUEDA DE LA VERDAD POR LA DANA</p>
     </div>
     <nav class="nav-buttons">
-      <a href="contacta_con_nosotros.html" target="_blank" class="nav-button">Contacta con nosotros</a>
+      <button class="nav-button">
+        <span class="contact-text-long">Contacta</span>
+      </button>
+      <a href="transparencia.html" class="nav-button">Transparencia</a>
       <div class="dropdown">
-        <button class="dropdown-toggle" id="dropdownBtn">Volúmenes ▼</button>
+        <button class="dropdown-toggle" id="dropdownBtn"><span class="volumes-text"></span> ▼</button>
         <ul class="dropdown-menu" id="dropdownMenu">
           <li><a href="volumen01.html" class="dropdown-item">Volumen 01 - 21 Feb 2025</a></li>
           <li><a href="volumen02.html" class="dropdown-item">Volumen 02 - 22 Feb 2025</a></li>
@@ -33,7 +36,7 @@
     </nav>
   </header>
 
-  <!-- ===== MANIFIESTO ROW ===== -->
+  <!-- ===== LECTURA ROW ===== -->
   <section class="manifesto-row">
     <div class="manifesto-title-box">
       <p>SÓLO PEDIMOS UNOS MINUTOS DE LECTURA</p>
@@ -52,7 +55,13 @@
     <article class="edition-card">
       <div class="post-grid">
         <div class="video-placeholder">
-          <iframe src="https://www.youtube.com/embed/5iU9fgIyoEM" allowfullscreen title="Video de Volumen 01"></iframe>
+          <iframe 
+            src="https://www.youtube.com/embed/5iU9fgIyoEM" 
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            title="Video del Volumen 01">
+          </iframe>
         </div>
         <div class="post-text">
           <header class="edition-header">
@@ -60,11 +69,16 @@
             <time class="edition-date">21 Febrero 2025</time>
           </header>
           <section class="edition-description">
-            <p>Investigación sobre la falsificación de fechas de los fallecidos y análisis político transversal a ambos bandos.</p>
+            <p>Investigación sobre la falsificación de fechas en las tumbas<br>de los fallecidos y análisis político transversal a ambos bandos.</p>
           </section>
           <section class="edition-actions">
-            <a href="https://drive.google.com/file/d/1bDeoPygxu8oDjPmzHCupEOKpuDiLXs4k/view?usp=sharing" class="edition-button filled" target="_blank">Leer</a>
-            <a href="https://drive.google.com/uc?export=download&id=1bDeoPygxu8oDjPmzHCupEOKpuDiLXs4k" class="edition-button outlined" download>Descargar</a>
+            <a href="https://drive.google.com/file/d/1bDeoPygxu8oDjPmzHCupEOKpuDiLXs4k/view?usp=sharing" 
+               class="edition-button filled" 
+               target="_blank" 
+               rel="noopener noreferrer">Leer</a>
+            <a href="https://drive.google.com/uc?export=download&id=1bDeoPygxu8oDjPmzHCupEOKpuDiLXs4k" 
+               class="edition-button outlined" 
+               download="volumen01.pdf">Descargar</a>
           </section>
         </div>
       </div>
@@ -96,6 +110,7 @@
     <button id="openModal" class="modal-button" aria-label="Abrir instrucciones de impresión">
       Instrucciones para imprimir
     </button>
+    <button class="modal-button" id="manifiestoBtn">Manifiesto</button>
   </div>
 
   <!-- ===== MODAL DE INSTRUCCIONES ===== -->
@@ -106,6 +121,14 @@
       <p>
         Es un formato A3 a doble cara en blanco y negro. Pide un papel de poco gramaje para la impresión o el papel más económico. No hace falta ni que lo corten y el doble de los papeles lo puedes hacer tú mismo.
       </p>
+    </div>
+  </div>
+
+  <div id="manifiestoModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Manifiesto</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
     </div>
   </div>
 

@@ -22,13 +22,14 @@ html {
   scroll-padding-top: 100px; /* Para compensar el header fijo */
 }
 
+/* Ajustes generales */
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background: var(--color-bg);
   color: var(--color-primary);
-  padding-top: 100px; /* Espacio para el header fijo */
+  padding-top: 66px; /* Reducido de 70px para permitir un ligero solapamiento */
   transition: background var(--transition);
   font-smooth: antialiased;      /* Suavizado de fuentes para mejorar la apariencia en macOS y Windows */
 }
@@ -45,7 +46,7 @@ main {
   backdrop-filter: blur(8px);
   background: rgba(255,255,255,0.9);
   box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-  padding: 1.2rem 2rem;
+  padding: 1rem 2rem; /* Reducido de 1.2rem */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -59,6 +60,7 @@ main {
   color: var(--color-primary);
   margin-bottom: 0.2rem;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .brand .subtitle {
@@ -142,6 +144,7 @@ main {
   width: 100%;
   overflow: hidden;
   margin-bottom: 2rem;
+  margin-top: 1.7rem; /* Reducido de 1.8rem para subir un pixel más */
 }
 
 .manifesto-title-box {
@@ -186,34 +189,35 @@ main {
 .posts-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1.5rem; /* Reducido de 2rem */
   width: 100%;
   max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 20px;
+  margin: 1.5rem auto; /* Reducido de 2rem */
+  padding: 0 2rem; /* Aumentado para mejor espaciado lateral en PC */
 }
 
 .edition-card {
   width: 100%;
-  padding: 1rem;
+  padding: 1.5rem; /* Aumentado de 1rem para mejor espaciado interno */
   background: var(--color-white);
   border-radius: 15px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   transition: transform var(--transition) var(--ease-out-expo),
-              box-shadow var(--transition) var(--ease-out-expo);
-  margin-bottom: 2rem;
+              box-shadow var(--transition) var (--ease-out-expo);
+  margin-bottom: 1.5rem; /* Reducido de 2rem */
   transform: translateY(0);
+  position: relative; /* Añadir esta línea si no existe */
 }
 
 .edition-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
 }
 
 .edition-card::after {
   content: '';
   position: absolute;
   inset: 0;
+  border-radius: 15px;
   border-radius: 15px;
   background: radial-gradient(
     800px circle at var(--mouse-x) var(--mouse-y),
@@ -222,30 +226,32 @@ main {
   );
   opacity: 0;
   transition: opacity var(--transition);
-}
-
-.edition-card:hover::after {
-  opacity: 1;
+  pointer-events: none; /* Añadir esta línea */
 }
 
 .post-grid {
   display: grid;
   grid-template-columns: 45% 55%;
-  gap: 1rem;
+  gap: 2rem; /* Aumentado de 1rem para mejor separación */
   align-items: start;
 }
 
 .video-placeholder {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Aspect ratio 16:9 */
   border-radius: 15px;
   overflow: hidden;
 }
 
 .video-placeholder iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 450px;
+  height: 100%;
   border: 0;
   border-radius: 15px;
-  display: block;
 }
 
 .post-text {
@@ -288,13 +294,18 @@ main {
 }
 
 .edition-button {
+  display: inline-block;
   padding: 0.6rem 1.2rem;
   border-radius: 50px;
   text-decoration: none;
   font-size: 0.95rem;
-  transition: background var(--transition), transform var(--transition);
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: center;
   position: relative;
   overflow: hidden;
+  transition: all var(--transition);
+  transform: translateY(0); /* Añadir esta línea */
 }
 
 .edition-button::before {
@@ -316,16 +327,44 @@ main {
   height: 400px;
 }
 
+.edition-button.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.edition-button.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--color-white);
+  animation: button-loading-spinner 0.6s linear infinite;
+}
+
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
 .filled {
   background: var(--color-primary);
-  color: var(--color-white);
+  color: var(--color-white) !important; /* Forzar color */
   border: none;
 }
 
 .outlined {
   background: transparent;
   border: 2px solid var(--color-primary);
-  color: var(--color-primary);
+  color: var(--color-primary) !important; /* Forzar color */
 }
 
 .filled:hover {
@@ -334,9 +373,10 @@ main {
 }
 
 .outlined:hover {
-  background: var(--color-primary);
-  color: var(--color-white);
+  background: var(--accent); /* Cambiado de var(--color-primary) a var(--accent) */
+  color: var(--color-white) !important; /* Añadido !important para asegurar que el color cambie */
   transform: translateY(-2px);
+  border-color: var(--accent); /* Añadido para que el borde también cambie de color */
 }
 
 .footer {
@@ -364,34 +404,114 @@ main {
   font-size: 0.9rem;
 }
 
+/* Media queries para tablets */
+@media (max-width: 1024px) {
+  .posts-container {
+    padding: 0 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .post-grid {
+    grid-template-columns: 1fr 1fr; /* Mantiene 2 columnas */
+    gap: 1.5rem;
+  }
+
+  .edition-card {
+    padding: 1.25rem;
+  }
+}
+
 @media (max-width: 768px) {
+  body {
+    padding-top: 90px; /* Aumentado para dar más espacio en móvil */
+  }
+  
   .navbar {
     flex-direction: column;
     text-align: center;
-    padding: 1rem;
+    padding: 0.75rem 1rem;
   }
+  
   .nav-buttons {
     margin-top: 0.5rem;
   }
+  
   .manifesto-row {
     flex-direction: column;
-    margin-top: calc(40px + 1rem); /* Aumentado 2rem extra */
+    margin-top: 1.2rem; /* Reducido de 3rem para subirlo */
+    width: 100%;
   }
+  
   .manifesto-title-box, .manifesto-scroll-box {
     width: 100%;
   }
   .manifesto-scroll-box {
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
   }
   .posts-container {
     grid-template-columns: 1fr;
-    padding: 0 10px;
+    padding: 0 1rem;
+    margin: 1rem auto;
+    gap: 1rem;
   }
   .edition-card {
-    margin: 2rem 0;
+    margin: 1rem 0;
+    padding: 1rem;
   }
   .post-grid {
     grid-template-columns: 1fr; /* Vídeo arriba, texto abajo */
+    gap: 1rem;
+  }
+  .edition-header {
+    margin-bottom: 0.75rem;
+  }
+  .edition-title {
+    font-size: 1.5rem; /* Reducido de 1.8rem */
+  }
+  .edition-description {
+    margin: 0.6rem 0;
+  }
+  .edition-actions {
+    gap: 0.6rem;
+  }
+  .manifesto-scroll-box {
+    padding: 0.75rem 0;
+  }
+  .volumes-text::before {
+    content: "Busca";
+  }
+  .brand .title {  /* Changed from just .title to .brand .title */
+    font-size: 1.12rem;
+    white-space: nowrap;
+    width: 100%;
+    transform: none;
+    text-align: center;
+  }
+  .brand {
+    width: 100%;
+    text-align: center;
+  }
+
+  .home-button {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* Media query para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .edition-title {
+    font-size: 1.3rem;
+  }
+
+  .edition-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .nav-button, .dropdown-toggle {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
   }
 }
 
@@ -451,4 +571,49 @@ main {
   z-index: 999;
   width: auto;
   text-align: center;
+  display: flex;  /* Añadido */
+  gap: 1rem;      /* Añadido */
+}
+
+.construction-message {
+  text-align: center;
+  padding: 50px 20px;
+  margin: 50px auto;
+  max-width: 600px;
+}
+
+.construction-message h2 {
+  margin-bottom: 20px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+/* Añade esto donde están los estilos de los botones */
+.volumes-button::before {
+  content: "volúmenes";
+}
+
+.volumes-text::before {
+  content: "Busca";
+}
+
+/* Añade esto junto a los otros estilos de botones */
+.contact-button::before {
+  content: "Contacta";
+}
+
+.contact-button span {
+  display: none;
 }
