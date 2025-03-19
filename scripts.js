@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const printModal = document.getElementById("printModal");
   const closeModalBtn = document.querySelector(".close");
 
+  // Dropdown functionality
   if (dropdownBtn && dropdownMenu) {
     dropdownBtn.addEventListener("click", function (event) {
       event.stopPropagation();
@@ -18,18 +19,26 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Modal functionality
   if (printBtn && printModal && closeModalBtn) {
     printBtn.addEventListener("click", function () {
-      printModal.classList.add("active");
+      printModal.style.display = "block";
     });
 
     closeModalBtn.addEventListener("click", function () {
-      printModal.classList.remove("active");
+      printModal.style.display = "none";
     });
 
-    printModal.addEventListener("click", function (event) {
+    window.addEventListener("click", function (event) {
       if (event.target === printModal) {
-        printModal.classList.remove("active");
+        printModal.style.display = "none";
+      }
+    });
+
+    // Close modal with ESC key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && printModal.style.display === "block") {
+        printModal.style.display = "none";
       }
     });
   }

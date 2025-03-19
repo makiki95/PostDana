@@ -9,7 +9,7 @@
   <!-- Favicon con emoji de periódico -->
   <link rel="icon" href="data:image/svg+xml,
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='64' height='64'>
-      <text y='20' font-size='18' font-family='Arial' fill='black'>📰</text>
+      <text y='20' font-size='18' text-anchor='middle' x='50%'>📰</text>
   </svg>" type="image/svg+xml">
 </head>
 <body>
@@ -49,12 +49,10 @@
 
   <!-- ===== POSTS CONTAINER (dos posts en columna vertical) ===== -->
   <section class="posts-container" id="posts">
-    <!-- Post Volumen 01 -->
     <article class="edition-card">
       <div class="post-grid">
         <div class="video-placeholder">
-          <!-- El vídeo ocupa todo el contenedor -->
-          <iframe src="https://www.youtube.com/embed/5iU9fgIyoEM" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/5iU9fgIyoEM" allowfullscreen title="Video de Volumen 01"></iframe>
         </div>
         <div class="post-text">
           <header class="edition-header">
@@ -62,21 +60,18 @@
             <time class="edition-date">21 Febrero 2025</time>
           </header>
           <section class="edition-description">
-            <p>Investigación sobre la falsificación de fechas en las tumbas<br>de los fallecidos y análisis político transversal a ambos bandos.</p>
+            <p>Investigación sobre la falsificación de fechas de los fallecidos y análisis político transversal a ambos bandos.</p>
           </section>
           <section class="edition-actions">
-            <a href="https://drive.google.com/file/d/1a_pUYNmBnATfMiWQbw2leS0fosR_9smR/view?usp=drive_link" class="edition-button filled" target="_blank">Leer</a>
-            <a href="https://drive.google.com/uc?export=download&id=1a_pUYNmBnATfMiWQbw2leS0fosR_9smR" class="edition-button outlined" download>Descargar</a>
+            <a href="https://drive.google.com/file/d/1bDeoPygxu8oDjPmzHCupEOKpuDiLXs4k/view?usp=sharing" class="edition-button filled" target="_blank">Leer</a>
+            <a href="https://drive.google.com/uc?export=download&id=1bDeoPygxu8oDjPmzHCupEOKpuDiLXs4k" class="edition-button outlined" download>Descargar</a>
           </section>
         </div>
       </div>
     </article>
-
-    <!-- Post Volumen 02 -->
     <article class="edition-card">
       <div class="post-grid">
         <div class="video-placeholder">
-          <!-- Placeholder para el vídeo del post 2 -->
           <div class="video-placeholder-inner"></div>
         </div>
         <div class="post-text">
@@ -96,14 +91,24 @@
     </article>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-logo">📰</div>
-      <p class="footer-text">© 2025 EL PERIÓDICO DEL PUEBLO. Todos los derechos reservados.</p>
-    </div>
-  </footer>
+  <!-- ===== BOTÓN PARA MODAL DE INSTRUCCIONES ===== -->
+  <div class="print-button-container">
+    <button id="openModal" class="modal-button" aria-label="Abrir instrucciones de impresión">
+      Instrucciones para imprimir
+    </button>
+  </div>
 
-  <script src="scripts.js"></script>
+  <!-- ===== MODAL DE INSTRUCCIONES ===== -->
+  <div id="printModal" class="modal" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalTitle">Instrucciones para imprimir:</h2>
+      <p>
+        Es un formato A3 a doble cara en blanco y negro. Pide un papel de poco gramaje para la impresión o el papel más económico. No hace falta ni que lo corten y el doble de los papeles lo puedes hacer tú mismo.
+      </p>
+    </div>
+  </div>
+
+  <script src="scripts.js" defer></script>
 </body>
 </html>
