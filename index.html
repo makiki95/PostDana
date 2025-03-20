@@ -11,6 +11,9 @@
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='64' height='64'>
       <text y='20' font-size='18' text-anchor='middle' x='50%'>📰</text>
   </svg>" type="image/svg+xml">
+  <meta name="theme-color" content="#333333">
+  <meta name="description" content="El Periódico del Pueblo - Noticias y actualidad">
+  <link rel="preload" href="styles.css" as="style">
 </head>
 <body>
   <!-- ===== HEADER ===== -->
@@ -22,12 +25,19 @@
       <p class="subtitle">EN BÚSQUEDA DE LA VERDAD POR LA DANA</p>
     </div>
     <nav class="nav-buttons">
-      <button class="nav-button">
+      <a href="contacta_con_nosotros.html" class="nav-button">
         <span class="contact-text-long">Contacta</span>
-      </button>
+      </a>
       <a href="transparencia.html" class="nav-button">Transparencia</a>
       <div class="dropdown">
-        <button class="dropdown-toggle" id="dropdownBtn"><span class="volumes-text"></span> ▼</button>
+        <button 
+          class="dropdown-toggle" 
+          id="dropdownBtn" 
+          aria-haspopup="true" 
+          aria-expanded="false"
+          aria-controls="dropdownMenu">
+          <span class="volumes-text"></span> ▼
+        </button>
         <ul class="dropdown-menu" id="dropdownMenu">
           <li><a href="volumen01.html" class="dropdown-item">Volumen 01 - 21 Feb 2025</a></li>
           <li><a href="volumen02.html" class="dropdown-item">Volumen 02 - 22 Feb 2025</a></li>
@@ -72,11 +82,11 @@
             <p>Investigación sobre la falsificación de fechas en las tumbas<br>de los fallecidos y análisis político transversal a ambos bandos.</p>
           </section>
           <section class="edition-actions">
-            <a href="https://drive.google.com/file/d/1bDeoPygxu8oDjPmzHCupEOKpuDiLXs4k/view?usp=sharing" 
+            <a href="https://drive.google.com/file/d/1c5xFTgrZsdw6ij6iYd-qJKHR8TFH9UdS/view?usp=sharing" 
                class="edition-button filled" 
                target="_blank" 
                rel="noopener noreferrer">Leer</a>
-            <a href="https://drive.google.com/uc?export=download&id=1bDeoPygxu8oDjPmzHCupEOKpuDiLXs4k" 
+            <a href="https://drive.google.com/uc?export=download&id=1c5xFTgrZsdw6ij6iYd-qJKHR8TFH9UdS" 
                class="edition-button outlined" 
                download="volumen01.pdf">Descargar</a>
           </section>
@@ -107,14 +117,36 @@
 
   <!-- ===== BOTÓN PARA MODAL DE INSTRUCCIONES ===== -->
   <div class="print-button-container">
-    <button id="openModal" class="modal-button" aria-label="Abrir instrucciones de impresión">
-      Instrucciones para imprimir
-    </button>
-    <button class="modal-button" id="manifiestoBtn">Manifiesto</button>
-  </div>
+    <div class="dropup">
+        <button class="modal-button" id="manifestoButton">
+            Manifiesto
+        </button>
+        <div class="dropup-content">
+            <h3>Manifiesto</h3>
+            <p>Contenido del manifiesto...</p>
+        </div>
+    </div>
+
+    <div class="dropup">
+        <button class="modal-button" id="printButton">
+            <span class="print-text-long">Instrucciones para imprimir</span>
+            <span class="print-text-short">Imprimir</span>
+        </button>
+        <div class="dropup-content">
+            <h3>Instrucciones para imprimir</h3>
+            <p>Para imprimir este periódico, simplemente acude a tu papelería de barrio y pide que te lo impriman en tamaño A3, a doble cara, en blanco y negro, y en un papel económico de bajo gramaje. No es necesario que te lo corten, doblen o grapen; puedes doblarlo tú mismo fácilmente en casa con un poco de paciencia.</p>
+        </div>
+    </div>
+</div>
 
   <!-- ===== MODAL DE INSTRUCCIONES ===== -->
-  <div id="printModal" class="modal" role="dialog" aria-labelledby="modalTitle">
+  <div 
+    id="printModal" 
+    class="modal" 
+    role="dialog" 
+    aria-labelledby="modalTitle" 
+    aria-hidden="true"
+    tabindex="-1">
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2 id="modalTitle">Instrucciones para imprimir:</h2>
