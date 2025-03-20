@@ -65,7 +65,7 @@ main {
 
 .brand .subtitle {
   font-size: 0.9rem;
-  color: var(--color-secondary);
+  color: var (--color-secondary);
 }
 
 .home-button {
@@ -198,15 +198,15 @@ main {
   background: var(--color-white);
   border-radius: 15px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  transition: transform var(--transition) var(--ease-out-expo),
-              box-shadow var(--transition) var (--ease-out-expo);
+  transition: transform 0.6s var(--ease-out-expo),  /* Increased from 0.4s to 0.6s */
+              box-shadow var(--transition) var(--ease-out-expo);
   margin-bottom: 1.5rem; /* Reducido de 2rem */
   transform: translateY(0);
   position: relative; /* Añadir esta línea si no existe */
 }
 
 .edition-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px); /* Reduced from -8px to -5px for subtler movement */
 }
 
 .edition-card::after {
@@ -389,9 +389,43 @@ main {
 .footer {
   background: var(--color-primary);
   color: var(--color-white);
-  padding: 1rem 2rem;
-  text-align: center;
+  padding: 2rem 1rem;
   margin-top: auto;
+  position: relative;  /* Añadir position relative */
+  z-index: 1001;      /* Mayor que el z-index de los botones flotantes (999) */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.social-link {
+  color: var(--color-white);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color var(--transition);
+}
+
+.social-link:hover {
+  color: var(--accent);
+}
+
+.social-link i {
+  font-size: 1.2rem;
 }
 
 .footer-content {
@@ -409,6 +443,12 @@ main {
 
 .footer-text {
   font-size: 0.9rem;
+}
+
+.footer-copyright {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  text-align: center;
 }
 
 /* Media queries para tablets */
@@ -534,6 +574,16 @@ main {
   
   .print-text-short {
     display: inline;
+  }
+
+  .footer-social {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .social-link {
+    font-size: 0.9rem;
   }
 }
 
