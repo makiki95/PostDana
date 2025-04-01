@@ -178,3 +178,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
   init();
 });
+
+// Gestión de cookies
+function initCookieBanner() {
+  const cookieBanner = document.getElementById('cookieBanner');
+  const acceptAllBtn = document.getElementById('acceptAllCookies');
+  const acceptSelectedBtn = document.getElementById('acceptSelectedCookies');
+  const rejectBtn = document.getElementById('rejectCookies');
+  const analyticsCb = document.getElementById('analyticsCookies');
+  const marketingCb = document.getElementById('marketingCookies');
+
+  function saveCookiePreferences(preferences) {
+    localStorage.setItem('cookiePreferences', JSON.stringify(preferences));
+    cookieBanner.classList.remove('show');
+    
+    // Activar/desactivar servicios según preferencias
+    if (preferences.analytics) {
+      // Activar Google Analytics, etc.
+    }
+    if (preferences.marketing) {
+      // Activar píxeles de marketing, etc.
+    }
+  }
+
+  if (!localStorage.getItem('cookiePreferences')) {
+    setTimeout(() => cookieBanner.classList.add('show'), 1000);
+  }
+
+  acceptAllBtn.addEventListener('click', () => {
+    saveCookiePreferences({
+      necessary: true,
+      analytics: true,
+      marketing: true
+    });
+  });
+
+  acceptSelectedBtn.addEventListener('click', () => {
+    saveCookiePreferences({
+      necessary: true,
+      analytics: analyticsCb.checked,
+      marketing: marketingCb.checked
+    });
+  });
+
+  rejectBtn.addEventListener('click', () => {
+    saveCookiePreferences({
+      necessary: true,
+      analytics: false,
+      marketing: false
+    });
+  });
+}
+
+// Inicializar el banner de cookies cuando se carga la página
+document.addEventListener('DOMContentLoaded', initCookieBanner);
