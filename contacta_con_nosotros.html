@@ -1,37 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacta con Nosotros - El Periódico del Pueblo</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacta con Nosotros - El Periódico del Pueblo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode.js@1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-  <!-- Header simple para navegación -->
-  <header class="navbar">
-    <div class="brand">
-      <a href="index.html" class="home-button">
-        <h1 class="title">EL PERIÓDICO DEL PUEBLO</h1>
-      </a>
-    </div>
-    <nav class="nav-buttons">
-      <a href="index.html" class="nav-button">Inicio</a>
-    </nav>
-  </header>
+    <header class="navbar">
+        <div class="brand">
+            <a href="index.html" class="home-button">
+                <h1 class="title">EL PERIÓDICO DEL PUEBLO</h1>
+            </a>
+        </div>
+        <nav class="nav-buttons">
+            <a href="index.html" class="nav-button">Inicio</a>
+        </nav>
+    </header>
 
-  <main style="padding:100px 20px; text-align: center;">
-    <h2>Contacta con Nosotros</h2>
-    <p>Escanea el código QR para unirte:</p>
-    <img src="https://i.gyazo.com/b4ed186c7ecb85174d34a478de8614c0.png" 
-         alt="Código QR - El Periódico del Pueblo" 
-         style="max-width: 100%; height: auto; margin-top: 20px;">
-  </main>
+    <main class="contact-page">
+        <div class="contact-container">
+            <!-- WhatsApp Banner -->
+            <div class="contact-card whatsapp-banner">
+                <div class="banner-content">
+                    <i class="fab fa-whatsapp"></i>
+                    <div class="banner-text">
+                        <h3>Grupo de WhatsApp</h3>
+                        <p>Únete a nuestra comunidad y mantente informado de todas las noticias</p>
+                    </div>
+                    <a href="https://chat.whatsapp.com/JLY5wJYPgWPFhlClsG1iBF" 
+                       class="whatsapp-button" 
+                       target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Unirse al grupo
+                    </a>
+                </div>
+            </div>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-logo">📰</div>
-      <p class="footer-text">© 2025 EL PERIÓDICO DEL PUEBLO. Todos los derechos reservados.</p>
-    </div>
-  </footer>
+            <!-- Social Media Section -->
+            <div class="contact-card social-section">
+                <h3>Síguenos en redes sociales</h3>
+                <div class="social-links">
+                    <a href="mailto:postdanavlc@gmail.com" class="social-link email">
+                        <i class="fas fa-envelope"></i>
+                        <span>postdanavlc@gmail.com</span>
+                    </a>
+                    <a href="https://www.instagram.com/periodico_del_pueblo" target="_blank" class="social-link instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span>@periodico_del_pueblo</span>
+                    </a>
+                    <a href="https://www.youtube.com/@AfectadosDanaDeValencia" target="_blank" class="social-link youtube">
+                        <i class="fab fa-youtube"></i>
+                        <span>Canal Principal</span>
+                    </a>
+                    <a href="https://www.youtube.com/@entrevistasperiodicodelpueblo" target="_blank" class="social-link youtube">
+                        <i class="fab fa-youtube"></i>
+                        <span>Canal de Entrevistas</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">📰</div>
+            <p class="footer-text">© 2025 EL PERIÓDICO DEL PUEBLO. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Generar código QR
+        const qr = new QRCode(document.getElementById("qrCode"), {
+            text: "https://chat.whatsapp.com/JLY5wJYPgWPFhlClsG1iBF",
+            width: 256,
+            height: 256,
+            colorDark: "#128C7E",  // Color de WhatsApp
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    </script>
 </body>
 </html>
