@@ -409,22 +409,23 @@ main {
 
 .footer-social {
   display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
   justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
 .social-link {
+  color: var(--color-primary);  /* Cambiado de color-white para mejor visibilidad */
+  text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  color: var(--color-primary);
-  text-decoration: none;
-  transition: opacity 0.2s;
+  transition: color var(--transition);
 }
 
-.social-link:hover {
-  opacity: 0.8;
+.social-link i {
+  font-size: 1.5rem;
 }
 
 .footer-links {
@@ -456,7 +457,25 @@ main {
   }
 
   .footer-social {
-    gap: 1rem;
+    flex-direction: row;  /* Forzar dirección horizontal */
+    flex-wrap: nowrap;    /* Evitar que los elementos se envuelvan */
+    gap: 1.5rem;         /* Reducir el espacio entre iconos en móvil */
+    justify-content: center;
+    width: 100%;         /* Asegurar que ocupe todo el ancho disponible */
+  }
+
+  .social-link i {
+    font-size: 1.3rem;   /* Reducir ligeramente el tamaño de los iconos en móvil */
+  }
+
+  .footer-social {
+    flex-direction: row; /* Mantener dirección horizontal */
+    gap: 1.5rem; /* Espaciado entre iconos */
+    justify-content: center;
+  }
+
+  .social-link {
+    font-size: 1.2rem; /* Ajustar tamaño de iconos en móvil */
   }
 
   .footer-links {
@@ -1676,4 +1695,39 @@ main {
         justify-content: center;
         padding: 0.8rem 1.5rem;
     }
+}
+
+/* Estilos del footer social */
+.footer-social {
+  display: flex;
+  flex-direction: row; /* Forzar dirección horizontal */
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 1rem 0;
+  width: 100%;
+  flex-wrap: nowrap; /* Evitar que los elementos se envuelvan */
+}
+
+.social-link {
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+/* Media query para móvil */
+@media (max-width: 768px) {
+  .footer-social {
+    flex-direction: row; /* Mantener horizontal en móvil */
+    gap: 1.5rem; /* Reducir el espacio entre iconos en móvil */
+    justify-content: center;
+    padding: 0 1rem; /* Añadir padding para evitar que toque los bordes */
+  }
+
+  .social-link {
+    font-size: 1.1rem; /* Reducir ligeramente el tamaño en móvil */
+  }
 }
