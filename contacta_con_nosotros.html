@@ -5,26 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacta con Nosotros - El Periódico del Pueblo</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Inter:wght@100;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/qrcode.js@1.0.0/qrcode.min.js"></script>
+    <!-- Favicon con emoji de periódico -->
+    <link rel="icon" href="data:image/svg+xml,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='64' height='64'>
+        <text y='20' font-size='18' text-anchor='middle' x='50%'>📰</text>
+    </svg>" type="image/svg+xml">
+    <meta name="theme-color" content="#333333">
 </head>
 <body>
+    <!-- ===== HEADER ===== -->
     <header class="navbar">
-        <div class="brand">
-            <a href="index.html" class="home-button">
-                <h1 class="title">EL PERIÓDICO DEL PUEBLO</h1>
-            </a>
-            <p class="subtitle">EN BÚSQUEDA DE LA VERDAD POR LA DANA</p>
-        </div>
-        <nav class="nav-buttons">
-            <a href="contacta_con_nosotros.html" class="nav-button">Contacta</a>
-            <a href="transparencia.html" class="nav-button">Transparencia</a>
-            <a href="puntos_de_entrega.html" class="nav-button">Puntos de entrega</a>
-        </nav>
+      <div class="brand">
+        <a href="#main" class="home-button">
+          <h1 class="title">EL PERIÓDICO DEL PUEBLO</h1>
+        </a>
+        <p class="subtitle">EN BÚSQUEDA DE LA VERDAD POR LA DANA</p>
+      </div>
+      <nav class="nav-buttons">
+        <a href="contacta_con_nosotros.html" class="nav-button">
+          <span class="contact-text-long">Contacta</span>
+        </a>
+        <a href="transparencia.html" class="nav-button">Transparencia</a>
+        <a href="puntos_de_entrega.html" class="nav-button">Puntos de entrega</a>
+      </nav>
     </header>
 
-    <main class="contact-page">
+    <main class="contact-page" id="main">
         <div class="contact-container">
             <!-- WhatsApp Banner -->
             <div class="contact-card whatsapp-banner">
@@ -68,6 +76,7 @@
         </div>
     </main>
 
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-social">
@@ -89,8 +98,9 @@
                 <a href="politica-cookies.html">Política de Cookies</a>
                 <a href="aviso-legal.html">Aviso Legal</a>
             </div>
-            <div class="footer-logo">📰</div>
-            <div class="footer-text">© 2025 EL PERIÓDICO DEL PUEBLO. Todos los derechos reservados.</div>
+            <div class="footer-copyright">
+                © 2025 EL PERIÓDICO DEL PUEBLO. Todos los derechos reservados.
+            </div>
         </div>
     </footer>
 

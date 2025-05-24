@@ -6,65 +6,167 @@
   <title>Política de Privacidad - EL PERIÓDICO DEL PUEBLO</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Inter:wght@100;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Favicon con emoji de periódico -->
+  <link rel="icon" href="data:image/svg+xml,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='64' height='64'>
+      <text y='20' font-size='18' text-anchor='middle' x='50%'>📰</text>
+  </svg>" type="image/svg+xml">
+  <meta name="theme-color" content="#333333">
 </head>
 <body>
+  <!-- ===== HEADER ===== -->
   <header class="navbar">
     <div class="brand">
-      <a href="index.html" class="home-button">
+      <a href="#main" class="home-button">
         <h1 class="title">EL PERIÓDICO DEL PUEBLO</h1>
       </a>
+      <p class="subtitle">EN BÚSQUEDA DE LA VERDAD POR LA DANA</p>
     </div>
+    <nav class="nav-buttons">
+      <a href="contacta_con_nosotros.html" class="nav-button">
+        <span class="contact-text-long">Contacta</span>
+      </a>
+      <a href="transparencia.html" class="nav-button">Transparencia</a>
+      <a href="puntos_de_entrega.html" class="nav-button">Puntos de entrega</a>
+    </nav>
   </header>
 
-  <main class="content-container privacy-content">
+  <main class="content-container privacy-content" id="main">
     <h1>Política de Privacidad</h1>
     
-    <section>
+    <div class="privacy-intro">
+      <p>En El Periódico del Pueblo, tu privacidad es nuestra prioridad. Esta política explica cómo tratamos tus datos.</p>
+    </div>
+
+    <section class="privacy-section">
       <h2>1. Información que recopilamos</h2>
       <p>En El Periódico del Pueblo nos comprometemos a proteger tu privacidad. Solo recopilamos la siguiente información:</p>
-      <ul>
-        <li>Cookies técnicas necesarias para el funcionamiento del sitio</li>
-        <li>Datos analíticos anónimos de uso del sitio (si lo aceptas)</li>
-        <li>Información que nos proporcionas voluntariamente a través del formulario de contacto</li>
-      </ul>
+      <div class="privacy-list">
+        <ul>
+          <li>
+            <i class="fas fa-cookie"></i>
+            <div>
+              <strong>Cookies técnicas</strong>
+              <p>Necesarias para el funcionamiento del sitio</p>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-chart-line"></i>
+            <div>
+              <strong>Datos analíticos anónimos</strong>
+              <p>De uso del sitio (si lo aceptas)</p>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>Información de contacto</strong>
+              <p>La que nos proporcionas voluntariamente a través del formulario</p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </section>
 
-    <section>
+    <section class="privacy-section">
       <h2>2. Uso de la información</h2>
       <p>Utilizamos la información recopilada para:</p>
-      <ul>
-        <li>Mejorar la experiencia de navegación</li>
-        <li>Analizar y mejorar el rendimiento del sitio</li>
-        <li>Responder a tus consultas y comentarios</li>
-      </ul>
+      <div class="privacy-list">
+        <ul>
+          <li>
+            <i class="fas fa-smile"></i>
+            <div>
+              <strong>Mejorar la experiencia</strong>
+              <p>Optimizamos tu navegación en el sitio</p>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-tachometer-alt"></i>
+            <div>
+              <strong>Analizar el rendimiento</strong>
+              <p>Mejoramos el funcionamiento del sitio</p>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-reply"></i>
+            <div>
+              <strong>Responder consultas</strong>
+              <p>Atendemos tus comentarios y preguntas</p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </section>
 
-    <section>
+    <section class="privacy-section">
       <h2>3. Tus derechos</h2>
-      <p>Tienes derecho a:</p>
-      <ul>
-        <li>Acceder a tus datos personales</li>
-        <li>Rectificar tus datos</li>
-        <li>Solicitar la eliminación de tus datos</li>
-        <li>Oponerte al tratamiento de tus datos</li>
-        <li>Solicitar la portabilidad de tus datos</li>
-      </ul>
+      <div class="rights-grid">
+        <div class="right-card">
+          <i class="fas fa-eye"></i>
+          <h3>Acceso</h3>
+          <p>Ver tus datos personales</p>
+        </div>
+        <div class="right-card">
+          <i class="fas fa-edit"></i>
+          <h3>Rectificación</h3>
+          <p>Modificar datos incorrectos</p>
+        </div>
+        <div class="right-card">
+          <i class="fas fa-trash"></i>
+          <h3>Eliminación</h3>
+          <p>Borrar tus datos</p>
+        </div>
+        <div class="right-card">
+          <i class="fas fa-ban"></i>
+          <h3>Oposición</h3>
+          <p>Rechazar el tratamiento</p>
+        </div>
+        <div class="right-card">
+          <i class="fas fa-exchange-alt"></i>
+          <h3>Portabilidad</h3>
+          <p>Transferir tus datos</p>
+        </div>
+      </div>
     </section>
 
-    <section>
+    <section class="privacy-section">
       <h2>4. Contacto</h2>
-      <p>Para ejercer tus derechos o realizar cualquier consulta sobre privacidad, puedes contactarnos en:</p>
-      <p class="contact-info">Email: Postdanavlc@gmail.com</p>
+      <div class="contact-box">
+        <i class="fas fa-envelope"></i>
+        <div>
+          <p>Para ejercer tus derechos o realizar cualquier consulta sobre privacidad, contáctanos en:</p>
+          <a href="mailto:postdanavlc@gmail.com" class="contact-email">postdanavlc@gmail.com</a>
+        </div>
+      </div>
     </section>
 
-    <section>
+    <section class="privacy-section">
       <h2>5. Cambios en la política</h2>
-      <p>Nos reservamos el derecho de actualizar esta política de privacidad en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio web.</p>
+      <div class="update-box">
+        <i class="fas fa-bell"></i>
+        <p>Nos reservamos el derecho de actualizar esta política de privacidad en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio web.</p>
+      </div>
     </section>
   </main>
 
+  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="footer-container">
+      <div class="footer-social">
+        <a href="mailto:postdanavlc@gmail.com" class="social-link" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://instagram.com/periodico_del_pueblo" target="_blank" class="social-link" title="Instagram: @Periodico_del_pueblo">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://youtube.com/@AfectadosDanaDeValencia" target="_blank" class="social-link" title="YouTube: @AfectadosDanaDeValencia">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://youtube.com/@entrevistasperiodicodelpueblo" target="_blank" class="social-link" title="YouTube: @entrevistasperiodicodelpueblo">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
       <div class="footer-links">
         <a href="politica-privacidad.html">Política de Privacidad</a>
         <a href="politica-cookies.html">Política de Cookies</a>

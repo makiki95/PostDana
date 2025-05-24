@@ -6,17 +6,33 @@
   <title>Aviso Legal - EL PERIÓDICO DEL PUEBLO</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Inter:wght@100;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Favicon con emoji de periódico -->
+  <link rel="icon" href="data:image/svg+xml,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='64' height='64'>
+      <text y='20' font-size='18' text-anchor='middle' x='50%'>📰</text>
+  </svg>" type="image/svg+xml">
+  <meta name="theme-color" content="#333333">
 </head>
 <body>
+  <!-- ===== HEADER ===== -->
   <header class="navbar">
     <div class="brand">
-      <a href="index.html" class="home-button">
+      <a href="#main" class="home-button">
         <h1 class="title">EL PERIÓDICO DEL PUEBLO</h1>
       </a>
+      <p class="subtitle">EN BÚSQUEDA DE LA VERDAD POR LA DANA</p>
     </div>
+    <nav class="nav-buttons">
+      <a href="contacta_con_nosotros.html" class="nav-button">
+        <span class="contact-text-long">Contacta</span>
+      </a>
+      <a href="transparencia.html" class="nav-button">Transparencia</a>
+      <a href="puntos_de_entrega.html" class="nav-button">Puntos de entrega</a>
+    </nav>
   </header>
 
-  <main class="content-container legal-content">
+  <main class="content-container legal-content" id="main">
     <h1>Aviso Legal</h1>
     
     <section>
@@ -31,6 +47,29 @@
       <p>El acceso y uso de este sitio web implica la aceptación expresa y sin reservas de todos los términos y condiciones incluidos en este Aviso Legal.</p>
       <h3>2.1. Propiedad Intelectual</h3>
       <p>Los derechos de propiedad intelectual del contenido de este sitio web son propiedad de EL PERIÓDICO DEL PUEBLO o cuenta con los derechos y/o autorizaciones correspondientes para su uso.</p>
+      
+      <h3>2.2. Licencia Creative Commons</h3>
+      <div class="license-section">
+        <p>Este trabajo está bajo una licencia <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license">Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a>.</p>
+        <div class="license-icon">
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+            <img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
+          </a>
+        </div>
+        <p class="license-terms">
+          Esto significa que puedes:
+          <ul>
+            <li><strong>Compartir</strong> — copiar y redistribuir el material en cualquier medio o formato</li>
+            <li><strong>Adaptar</strong> — remezclar, transformar y construir a partir del material</li>
+          </ul>
+          Bajo los siguientes términos:
+          <ul>
+            <li><strong>Atribución</strong> — Debes dar crédito de manera adecuada a EL PERIÓDICO DEL PUEBLO</li>
+            <li><strong>NoComercial</strong> — No puedes utilizar el material con fines comerciales</li>
+            <li><strong>CompartirIgual</strong> — Si remezclas, transformas o creas a partir del material, debes distribuir tu contribución bajo la misma licencia</li>
+          </ul>
+        </p>
+      </div>
     </section>
 
     <section>
@@ -54,8 +93,23 @@
     </section>
   </main>
 
+  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="footer-container">
+      <div class="footer-social">
+        <a href="mailto:postdanavlc@gmail.com" class="social-link" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://instagram.com/periodico_del_pueblo" target="_blank" class="social-link" title="Instagram: @Periodico_del_pueblo">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://youtube.com/@AfectadosDanaDeValencia" target="_blank" class="social-link" title="YouTube: @AfectadosDanaDeValencia">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://youtube.com/@entrevistasperiodicodelpueblo" target="_blank" class="social-link" title="YouTube: @entrevistasperiodicodelpueblo">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
       <div class="footer-links">
         <a href="politica-privacidad.html">Política de Privacidad</a>
         <a href="politica-cookies.html">Política de Cookies</a>

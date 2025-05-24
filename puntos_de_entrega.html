@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puntos de Entrega - EL PERIÓDICO DEL PUEBLO</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Inter:wght@100;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Favicon con emoji de periódico -->
+  <link rel="icon" href="data:image/svg+xml,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='64' height='64'>
+      <text y='20' font-size='18' text-anchor='middle' x='50%'>📰</text>
+  </svg>" type="image/svg+xml">
+  <meta name="theme-color" content="#333333">
+  <style>
+    .delivery-points {
+      padding: 2rem 0;
+      background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-white) 100%);
+    }
+
+    .location-filter {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-button {
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--color-primary);
+      border-radius: 20px;
+      background: transparent;
+      color: var(--color-primary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-button.active {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .filter-button:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .points-container {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .points-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .points-title {
+      text-align: center;
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+      color: var(--color-primary);
+      font-family: 'Libre Baskerville', serif;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .points-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .points-description {
+      font-size: 1.1rem;
+      color: var(--color-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .points-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .point-card {
+      background: var(--color-white);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      transition: all 0.3s var(--ease-out-expo);
+      position: relative;
+      overflow: hidden;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .point-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s var(--ease-out-expo);
+    }
+
+    .point-card.hidden {
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .point-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    }
+
+    .point-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .point-location {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .point-location i {
+      font-size: 1.2rem;
+    }
+
+    .location-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .location-item {
+      padding: 1.2rem;
+      background: #f8f8f8;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+      margin-bottom: 1rem;
+    }
+
+    .location-item:hover {
+      transform: translateX(5px);
+    }
+
+    .point-name {
+      font-weight: bold;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .point-address {
+      color: var(--color-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      background: rgba(230, 57, 70, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .map-link:hover {
+      color: var(--color-primary);
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .delivery-points {
+        padding: 2rem 0;
+      }
+
+      .points-header {
+        margin-bottom: 2rem;
+      }
+
+      .points-title {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .points-description {
+        font-size: 1rem;
+        padding: 0 1rem;
+      }
+
+      .points-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1rem;
+      }
+
+      .point-card {
+        padding: 1.5rem;
+      }
+
+      .point-name {
+        font-size: 1.3rem;
+      }
+
+      .point-button {
+        width: 100%;
+        justify-content: center;
+        padding: 0.7rem 1rem;
+      }
+
+      .filter-button {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+      }
+
+      .points-container {
+        padding: 1rem;
+      }
+
+      .location-item {
+        padding: 1rem;
+      }
+    }
+
+    /* Añadir esta regla específica para el botón "Todos" */
+    a.filter-button {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="navbar">
+    <div class="brand">
+      <a href="#main" class="home-button">
+        <h1 class="title">EL PERIÓDICO DEL PUEBLO</h1>
+      </a>
+      <p class="subtitle">EN BÚSQUEDA DE LA VERDAD POR LA DANA</p>
+    </div>
+    <nav class="nav-buttons">
+      <a href="contacta_con_nosotros.html" class="nav-button">
+        <span class="contact-text-long">Contacta</span>
+      </a>
+      <a href="transparencia.html" class="nav-button">Transparencia</a>
+      <a href="puntos_de_entrega.html" class="nav-button">Puntos de entrega</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="delivery-points">
+    <div class="points-container">
+      <div class="points-header">
+        <h2 class="points-title">Puntos de Entrega Oficiales</h2>
+        <p class="points-description">
+          Encuentra tu ejemplar de El Periódico del Pueblo en cualquiera de estos establecimientos colaboradores. 
+          Todos ellos están comprometidos con la transparencia y la búsqueda de la verdad.
+        </p>
+      </div>
+
+      <div class="location-filter" id="locationFilter">
+        <a href="puntos_de_entrega.html" class="filter-button active">Todos</a>
+        <!-- Los botones de filtro se generarán dinámicamente -->
+      </div>
+
+      <div class="points-grid" id="pointsGrid">
+        <!-- Las tarjetas se generarán dinámicamente -->
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-social">
+        <a href="mailto:postdanavlc@gmail.com" class="social-link" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://instagram.com/periodico_del_pueblo" target="_blank" class="social-link" title="Instagram: @Periodico_del_pueblo">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://youtube.com/@AfectadosDanaDeValencia" target="_blank" class="social-link" title="YouTube: @AfectadosDanaDeValencia">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://youtube.com/@entrevistasperiodicodelpueblo" target="_blank" class="social-link" title="YouTube: @entrevistasperiodicodelpueblo">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+      <div class="footer-links">
+        <a href="politica-privacidad.html">Política de Privacidad</a>
+        <a href="politica-cookies.html">Política de Cookies</a>
+        <a href="aviso-legal.html">Aviso Legal</a>
+      </div>
+      <div class="footer-copyright">
+        © 2025 EL PERIÓDICO DEL PUEBLO. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Datos de los puntos de entrega
+    const deliveryPoints = [
+      {
+        location: 'Llíria',
+        name: 'Edeta Runing',
+        address: 'C/ del Pla de l´Arc, 44, Llíria, Valencia, 46160',
+        mapsUrl: 'https://maps.app.goo.gl/jGz852B66zShToNy5'
+      },
+      {
+        location: 'Catarroja',
+        name: 'Estanco 001',
+        address: 'Av/ Ramón y Cajal, 50, Catarroja, Valencia, 46470',
+        mapsUrl: 'https://maps.app.goo.gl/MrX7TLJeuhyAupcc6'
+      },
+      {
+        location: 'Catarroja',
+        name: 'Open Minds CBD',
+        address: 'C/ Asturias, 3, Catarroja, Valencia, 46470',
+        mapsUrl: 'https://maps.app.goo.gl/8mF3RiZjfqtQ1nAe6'
+      },
+      {
+        location: 'Chiva',
+        name: 'Peluqueria Peluditos',
+        address: 'C/ Buñol, 7, Chiva, Valencia, 46370',
+        mapsUrl: 'https://maps.app.goo.gl/qdGfdZrTvuH2h1WX9'
+      },
+      {
+        location: 'Chiva',
+        name: 'Bar la Fuente',
+        address: 'Plaza Constitución, 13, Chiva, Valencia, 46370',
+        mapsUrl: 'https://maps.app.goo.gl/oZme82J97uDLrBiB9'
+      },
+      {
+        location: 'Sueca',
+        name: 'Atenea Estudis',
+        address: 'Carrer del Mercat, 7, Sueca, Valencia, 46410',
+        mapsUrl: 'https://maps.app.goo.gl/8kkty5Qvc4JhVFuSA'
+      },
+      {
+        location: 'Sueca',
+        name: 'BAR PLAÇA DEL MERCAT',
+        address: 'Carrer del Mercat, 4A, 46410 Sueca, Valencia',
+        mapsUrl: 'https://maps.app.goo.gl/RtSB9Rv1Qrun3kCU8'
+      },
+      {
+        location: 'Almácera',
+        name: 'AUTOS ALFARO',
+        address: 'Av. Blasco Ibáñez, 15, 46132 Almàssera, Valencia',
+        mapsUrl: 'https://maps.app.goo.gl/oHe3WaAEKU7KyoHZ9'
+      },
+      {
+        location: 'Carcaixent',
+        name: 'Herbolarí de Laura',
+        address: 'Carrer de Ramón y Cajal, 35, 46740 Carcaixent, Valencia',
+        mapsUrl: 'https://maps.app.goo.gl/WcgkMdjjnZ3Dsthi7'
+      },
+      {
+        location: 'Cheste',
+        name: 'Hostal Restaurante Sol',
+        address: 'C. Chiva, 4, 46380 Cheste, Valencia',
+        mapsUrl: 'https://maps.app.goo.gl/mm3b5oFybNNypsQHA'
+      },
+      {
+        location: 'Villajoyosa',
+        name: 'Carnisseria d´Aurora',
+        address: 'C/ Pati Fosc, 9, 03570 La Vila Joiosa, Alacant',
+        mapsUrl: 'https://maps.app.goo.gl/bxf1L6zXmrGnfxyF7'
+      },
+      {
+        location: 'El Puig de Santa Maria',
+        name: 'Jhon Skate CDB',
+        address: 'C/ Josep Monterde, 13, 46540 El Puig de Santa Maria, Valencia',
+        mapsUrl: 'https://maps.app.goo.gl/vQ3soxZ9zPQZn1JUA'
+      },
+      {
+        location: 'Carcaixent',
+        name: 'Mi centro Yoga',
+        address: 'C/ de la Baixada dels Magraners, 27, 46740 Carcaixent, Valencia',
+        mapsUrl: 'https://maps.app.goo.gl/VZpLKcdCz3QmmhXa9'
+      },
+      {
+        location: 'Valencia',
+        name: 'Rocío Giner centro de danza',
+        address: 'C/ de Benicarló, 11, 46020 València, Valencia',
+        mapsUrl: 'https://maps.app.goo.gl/RTVjftEHRCw2kq1dA'
+      },
+      {
+        location: 'Turis',
+        name: 'Kiosko Papelería Ana',
+        address: 'Avinguda de Les Corts Valencianes, 26, 46389 Turís, Valencia',
+        mapsUrl: 'https://maps.app.goo.gl/MDMZpExjkYBXQMSQ6'
+      },
+      {
+        location: 'Valencia',
+        name: 'Peluquería Leonor Estilistas',
+        address: 'C/ de Just Vilar, 4, Poblats Marítims, 46011 València',
+        mapsUrl: 'https://maps.app.goo.gl/efj1j61sRbyjrHvW7'
+      },
+      {
+        location: 'Alicante',
+        name: '420 Grow Shop CBD',
+        address: 'C/ General Elizaicin Nº30, Bajo Derecha, 03013, Alicante',
+        mapsUrl: 'https://maps.app.goo.gl/NejN7qgueWThGrMC7'
+      },
+      {
+        location: 'Turis',
+        name: 'GUApito Peluqiería Canino',
+        address: 'Av/ Doctor Bautista Soler Crespo, 1, 46389 Turis, Valencia',
+        mapsUrl: 'https://maps.app.goo.gl/Pkc1FgSzEjZwrsjX7'
+      },
+      {
+        location: 'Alzira',
+        name: 'Estanco Nº5',
+        address: 'C/ del Cardenal Vera, 52, 46600 Alzira',
+        mapsUrl: 'https://maps.app.goo.gl/MoDrPMqLbXXpfrco6'
+      },
+      {
+        location: 'Godella',
+        name: 'Tienda Garabatos',
+        address: 'C/ Rocafort, 2, Bajo, 46110 Godella, Valencia',
+        mapsUrl: 'https://maps.app.goo.gl/go3ycuT1Q4BLJFos7'
+      },
+      {
+        location: 'Godella',
+        name: 'Botiga Camí de L´horta',
+        address: 'C/ Sant Antoni,18 baix-4art-esq, Carrer San Antoni, 18, 46110 Godella, Valencia',
+        mapsUrl: 'https://maps.app.goo.gl/3X5CQXxaKMjdECS4A'
+      },
+      {
+        location: 'Pedralba',
+        name: 'Restaurante El Chiringuito',
+        address: 'CV-380, d66, 46164 Pedralba, Valencia',
+        mapsUrl: 'https://maps.app.goo.gl/giKn34p3fjUuDtJ3A'
+      },
+      {
+        location: 'Catarroja',
+        name: 'Kiosco Mercat',
+        address: 'C/ Salvador Pechuán, 16, 46470 Catarroja, Valencia',
+        mapsUrl: 'https://maps.app.goo.gl/KStP7YGpvQbGdXur7'
+      },
+      {
+        location: 'Algemesí',
+        name: 'Cafetería El Passeig',
+        address: 'Carrer de Sant Josep de Calassanç, 2, 46680 Algemesí, Valencia',
+        mapsUrl: 'https://maps.app.goo.gl/728URT9HM9G5Qcee7'
+      },
+      {
+        location: 'Rincón de Ademuz',
+        name: 'Chiringuito de Torrebaja',
+        address: 'C/ Proyecto 3, 46143 Torre Baja, Valencia',
+        mapsUrl: 'https://maps.app.goo.gl/tGwwm3H2yd1VQQWt9'
+      }
+    ];
+
+    // Función para obtener ubicaciones únicas
+    function getUniqueLocations(points) {
+      return [...new Set(points.map(point => point.location))].sort();
+    }
+
+    // Función para crear botones de filtro
+    function createFilterButtons() {
+      const locations = getUniqueLocations(deliveryPoints);
+      const filterContainer = document.getElementById('locationFilter');
+      
+      locations.forEach(location => {
+        const button = document.createElement('button');
+        button.className = 'filter-button';
+        button.textContent = location;
+        button.dataset.location = location;
+        button.addEventListener('click', () => filterPoints(location));
+        filterContainer.appendChild(button);
+      });
+    }
+
+    // Función para filtrar puntos
+    function filterPoints(location) {
+      const cards = document.querySelectorAll('.point-card');
+      const buttons = document.querySelectorAll('.filter-button');
+
+      // Si es "all", redirigir a la página de puntos de entrega
+      if (location === 'all') {
+        window.location.href = 'puntos_de_entrega.html';
+        return;
+      }
+
+      // Actualizar botones activos
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.location === location) {
+          btn.classList.add('active');
+        }
+      });
+
+      // Filtrar tarjetas
+      cards.forEach(card => {
+        if (card.dataset.location === location) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // Función para crear las tarjetas
+    function createPointCards() {
+      const grid = document.getElementById('pointsGrid');
+      const groupedPoints = deliveryPoints.reduce((acc, point) => {
+        if (!acc[point.location]) acc[point.location] = [];
+        acc[point.location].push(point);
+        return acc;
+      }, {});
+
+      Object.entries(groupedPoints).forEach(([location, points]) => {
+        const card = document.createElement('div');
+        card.className = 'point-card';
+        card.dataset.location = location;
+
+        const locationsList = points.map(point => `
+          <div class="location-item">
+            <h3 class="point-name">${point.name}</h3>
+            <p class="point-address">${point.address}</p>
+            <a href="${point.mapsUrl}" class="map-link" target="_blank" rel="noopener">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Ver en Google Maps</span>
+            </a>
+          </div>
+        `).join('');
+
+        card.innerHTML = `
+          <div class="point-location">${location}</div>
+          <div class="location-list">
+            ${locationsList}
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    // Inicialización
+    document.addEventListener('DOMContentLoaded', () => {
+      createPointCards();
+      createFilterButtons();
+      
+      // Activar el botón "Todos" por defecto
+      document.querySelector('.filter-button[data-location="all"]').classList.add('active');
+
+      // Animación de entrada para las tarjetas
+      const cards = document.querySelectorAll('.point-card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease-out, transform 0.6s var(--ease-out-expo)';
+        observer.observe(card);
+      });
+    });
+  </script>
+</body>
+</html>
