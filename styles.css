@@ -889,50 +889,62 @@ main {
   left: 50%;
   transform: translateX(-50%);
   width: 85%;
-  max-width: 350px;
-  background: rgba(225, 225, 225, 0.8);
-  backdrop-filter: blur(12px);
+  max-width: 500px;
+  max-height: 70vh;
+  background: rgba(245, 245, 245, 0.85); /* Cambiado a un gris más claro y más translúcido */
+  backdrop-filter: blur(6px); /* Reducido el blur para mayor translucidez */
   border-radius: 12px;
   padding: 1.25rem;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
   opacity: 0;
   visibility: hidden;
   transition: all var(--transition) var(--ease-out-expo);
   z-index: 1000;
   text-align: center;
+  overflow-y: auto;
+  display: none;
 }
 
 .dropup-content.active {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0);
+  display: block;
+  transform: translateX(-50%);
 }
 
 .dropup-content h3 {
   font-family: 'Libre Baskerville', serif;
   margin-bottom: 1rem;
   color: var(--color-primary);
-  text-align: center; /* Asegurar que el título esté centrado */
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .dropup-content p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--color-secondary);
   margin-bottom: 1rem;
-  text-align: center; /* Centrar el texto del contenido */
+  line-height: 1.6;
+  text-align: left;
+  font-size: 0.95rem;
+  color: var(--color-secondary);
 }
 
-/* Ajuste responsive para móviles */
-@media (max-width: 768px) {
-  .dropup-content {
-    bottom: 80px; /* Solo ajustamos la altura en móvil */
-  }
-  
-  .print-button-container {
-    bottom: 1.5rem;
-    padding: 0 1rem;
-  }
+/* Ajustar el scrollbar para que sea más discreto */
+.dropup-content::-webkit-scrollbar {
+  width: 4px; /* Reducido de 6px */
+}
+
+.dropup-content::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.03);
+  border-radius: 3px;
+}
+
+.dropup-content::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.15);
+  border-radius: 3px;
+}
+
+.dropup-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.25);
 }
 
 .construction-message {
@@ -2262,7 +2274,6 @@ main {
   .chart-text-content {
     font-size: 0.9rem;
     line-height: 1.5;
-    padding-right: 0.75rem;
   }
 }
 
@@ -2275,7 +2286,7 @@ main {
   }
 
   .chart-main-title {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   #statisticsChart {
@@ -2532,7 +2543,7 @@ main {
   }
 
   .chart-main-title {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   #statisticsChart {
@@ -2546,7 +2557,7 @@ main {
 
   /* Mejorar la legibilidad de la leyenda en móvil */
   #statisticsChart text {
-    font-size: 9px !important;
+    font-size: 10px !important;
   }
 }
 
@@ -2584,7 +2595,7 @@ main {
   #statisticsChart {
     height: 340px; /* Aumentado de 280px a 340px */
     margin: 0;
-    padding: 0.25rem;
+    padding: 0;
   }
 
   .chart-text-box {
@@ -2690,6 +2701,8 @@ main {
 @media (max-width: 480px) {
   .statistics-card {
     padding: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
   }
 
   .chart-main-title {

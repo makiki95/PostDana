@@ -128,33 +128,54 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (!button || !content) return;
 
-        button.addEventListener('click', (e) => {
+        const toggleDropup = (e) => {
           e.stopPropagation();
-          // Cerrar todos los otros dropups primero
+          
+          // Cerrar otros dropups primero
           dropups.forEach(otherDropup => {
             if (otherDropup !== dropup) {
-              otherDropup.querySelector('.dropup-content')?.classList.remove('active');
+              const otherContent = otherDropup.querySelector('.dropup-content');
+              if (otherContent?.classList.contains('active')) {
+                otherContent.classList.remove('active');
+              }
             }
           });
-          // Toggle el actual
-          content.classList.toggle('active');
-        });
-      });
 
-      // Cerrar al presionar Escape
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          dropups.forEach(dropup => {
-            dropup.querySelector('.dropup-content')?.classList.remove('active');
-          });
-        }
+          // Toggle el actual con una pequeña animación
+          if (!content.classList.contains('active')) {
+            content.style.display = 'block';
+            requestAnimationFrame(() => {
+              content.classList.add('active');
+            });
+          } else {
+            content.classList.remove('active');
+          }
+        };
+
+        button.addEventListener('click', toggleDropup);
       });
 
       // Cerrar al hacer click fuera
       document.addEventListener('click', (e) => {
-        if (!e.target.closest('.dropup')) {
+        const isClickInside = e.target.closest('.dropup');
+        if (!isClickInside) {
           dropups.forEach(dropup => {
-            dropup.querySelector('.dropup-content')?.classList.remove('active');
+            const content = dropup.querySelector('.dropup-content');
+            if (content?.classList.contains('active')) {
+              content.classList.remove('active');
+            }
+          });
+        }
+      });
+
+      // Cerrar con Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          dropups.forEach(dropup => {
+            const content = dropup.querySelector('.dropup-content');
+            if (content?.classList.contains('active')) {
+              content.classList.remove('active');
+            }
           });
         }
       });
