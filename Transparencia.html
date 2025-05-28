@@ -3,17 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transparencia - Dana</title>
+    <title>Transparencia - EL PERIÓDICO DEL PUEBLO</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Inter:wght@100;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='64' height='64'><text y='20' font-size='18' text-anchor='middle' x='50%'>📰</text></svg>" type="image/svg+xml">
+    <meta name="theme-color" content="#333333">
+    <meta name="description" content="Transparencia - El Periódico del Pueblo">
 </head>
 <body>
-    <div class="container">
-        <h1>Transparencia</h1>
-        <div class="construction-message">
-            <h2>Página en construcción</h2>
-            <p>Estamos trabajando para brindarte información sobre transparencia próximamente.</p>
-            <a href="index.html" class="button">Volver al inicio</a>
+    <!-- Header -->
+    <header class="navbar">
+        <div class="brand">
+            <a href="index.html" class="home-button">
+                <h1 class="title">EL PERIÓDICO DEL PUEBLO</h1>
+            </a>
+            <p class="subtitle">EN BÚSQUEDA DE LA VERDAD POR LA DANA</p>
         </div>
-    </div>
+        <nav class="nav-buttons">
+            <a href="contacta_con_nosotros.html" class="nav-button">
+                <span class="contact-text-long">Contacta</span>
+            </a>
+            <a href="transparencia.html" class="nav-button">Transparencia</a>
+            <a href="puntos_de_entrega.html" class="nav-button">Puntos de entrega</a>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <div class="container">
+            <section class="transparency-section">
+                <h1 class="section-title">Transparencia</h1>
+                <p class="section-description">
+                    Somos un proyecto totalmente autofinanciado. Nuestras publicaciones se imprimen con una fotocopiadora Epson o en papelerías de barrio, sufragadas con nuestros propios recursos. No aceptamos dinero de asociaciones, partidos políticos ni cualquier otra entidad que pudiera comprometer nuestra independencia. Este es un proyecto del pueblo y para el pueblo.
+                </p>
+
+                <!-- Video de la impresora -->
+                <div class="transparency-video">
+                    <video controls width="100%" preload="metadata">
+                        <source src="/Users/marcos/Library/CloudStorage/GoogleDrive-marcosmarquezgomez@gmail.com/Otros ordenadores/Mi PC/cosas/Dana/impresora.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                </div>
+                
+                <!-- Sección de Metodología -->
+                <div class="transparency-card">
+                    <h2><i class="fas fa-microscope"></i> Metodología</h2>
+                    <div class="transparency-content">
+                        <p>Nuestro proceso de investigación se basa en:</p>
+                        <ul>
+                            <li>Entrevistas directas con afectados y testigos</li>
+                            <li>Revisión de documentación oficial</li>
+                            <li>Verificación cruzada de datos</li>
+                            <li>Consulta con expertos independientes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sección de Fuentes -->
+                <div class="transparency-card">
+                    <h2><i class="fas fa-file-alt"></i> Fuentes</h2>
+                    <div class="transparency-content">
+                        <p>Nuestras fuentes incluyen:</p>
+                        <ul>
+                            <li>Registros y documentos oficiales</li>
+                            <li>Testimonios verificados de afectados</li>
+                            <li>Informes técnicos y estudios especializados</li>
+                            <li>Archivos históricos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sección de Equipo -->
+                <div class="transparency-card">
+                    <h2><i class="fas fa-users"></i> Nuestro Equipo</h2>
+                    <div class="transparency-content">
+                        <p>Somos un grupo de:</p>
+                        <ul>
+                            <li>Ciudadanos afectados por la DANA</li>
+                            <li>Profesionales voluntarios</li>
+                            <li>Investigadores independientes</li>
+                            <li>Colaboradores técnicos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sección de Financiación -->
+                <div class="transparency-card">
+                    <h2><i class="fas fa-hand-holding-usd"></i> Financiación</h2>
+                    <div class="transparency-content">
+                        <p>Este proyecto se mantiene gracias a:</p>
+                        <ul>
+                            <li>Aportaciones voluntarias de los miembros del equipo</li>
+                            <li>Donaciones ciudadanas</li>
+                            <li>No aceptamos publicidad ni financiación política</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-social">
+                <a href="mailto:postdanavlc@gmail.com" class="social-link" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://instagram.com/periodico_del_pueblo" target="_blank" class="social-link" title="Instagram: @Periodico_del_pueblo">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com/@AfectadosDanaDeValencia" target="_blank" class="social-link" title="YouTube: @AfectadosDanaDeValencia">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://youtube.com/@entrevistasperiodicodelpueblo" target="_blank" class="social-link" title="YouTube: @entrevistasperiodicodelpueblo">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="politica-privacidad.html">Política de Privacidad</a>
+                <a href="politica-cookies.html">Política de Cookies</a>
+                <a href="aviso-legal.html">Aviso Legal</a>
+            </div>
+            <div class="footer-copyright">
+                © 2025 EL PERIÓDICO DEL PUEBLO. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
