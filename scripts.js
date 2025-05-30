@@ -14,14 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
     dropdownMenu: document.getElementById("dropdownMenu"),
     printBtn: document.getElementById("printButton"),
     manifiestoBtn: document.getElementById("manifestoButton"),
-    printModal: document.getElementById("printModal"),
-    manifiestoModal: document.getElementById("manifiestoModal"),
-    editionButtons: document.querySelectorAll('.edition-button'),
-    dropups: document.querySelectorAll('.dropup'),
-    // Agregar validación de elementos
     validate() {
-      // Solo valida dropdownBtn y dropdownMenu para el dropdown
-      return this.dropdownBtn && this.dropdownMenu;
+      return this.dropdownBtn && this.dropdownMenu && this.printBtn && this.manifiestoBtn;
     }
   };
 
@@ -189,43 +183,38 @@ document.addEventListener("DOMContentLoaded", () => {
   function drawStatisticsChart() {
     const chartData = [
       ['Área', 'Porcentaje', { role: 'tooltip' }],
-      ['Gobierno Autonómico Actual', 32, 'Gobierno Autonómico Actual: 32%'],
-      ['Gobiernos Autonómicos anteriores', 23, 'Gobiernos Autonómicos anteriores: 23%'],
-      ['Gobierno Central', 18, 'Gobierno Central: 18%'],
-      ['Protección Civil', 8, 'Protección Civil: 8%'],
-      ['Autoridades locales', 4, 'Autoridades locales: 4%'],
-      ['AEMET y CHJ', 10, 'AEMET y CHJ: 10%'],
-      ['Factores naturales', 5, 'Factores naturales: 5%']
+      ['Gobierno Autonómico Actual', 25, 'Gobierno Autonómico Actual: 25%'],
+      ['Gobierno Central', 24, 'Gobierno Central: 24%'],
+      ['Gobiernos Autonómicos anteriores', 17, 'Gobiernos Autonómicos anteriores: 17%'],
+      ['AEMET y CHJ', 14, 'AEMET y CHJ: 14%'],
+      ['Autoridades locales', 12, 'Autoridades locales: 12%'],
+      ['Protección Civil', 8, 'Protección Civil: 8%']
     ];
 
     const chartTexts = {
       'Gobierno Autonómico Actual': {
-        title: 'Gobierno Autonómico Actual (Carlos Mazón): 32%',
-        text: 'Retraso crítico en activación del nivel máximo de alerta (Nivel 2 de emergencia). Fallo de comunicación a la población (sistema ES-ALERT). Descoordinación evidente en los momentos más cruciales (CECOPI activado tarde y sin liderazgo claro). Negligencia al subestimar públicamente la magnitud del evento al inicio del desastre. Este alto porcentaje refleja una responsabilidad directa e inmediata, debido a su posición como máxima autoridad durante el desastre.'
-      },
-      'Gobiernos Autonómicos anteriores': {
-        title: 'Gobiernos Autonómicos anteriores (Camps, Fabra, Puig): 23%',
-        text: 'Incumplimiento reiterado del PATRICOVA (desde 2007 hasta 2023). No ejecución de infraestructuras críticas y necesarias previstas (barranco del Poyo, río Magro). Desatención sistemática ante advertencias técnicas previas al evento. Este porcentaje considerable refleja una responsabilidad histórica y estructural por una prevención deficiente acumulada durante más de una década.'
+        title: 'Gobierno Autonómico Actual (Carlos Mazón): 25%',
+        text: '<p>⚠ Retraso crítico en activación del nivel máximo de alerta (Nivel 3).</p><br><p>⚠ Grave fallo en la comunicación de emergencias (ES-ALERT).</p><br><p>⚠ Descoordinación en momentos cruciales (CECOPI activado tarde, liderazgo difuso).</p><br><p>⚠ Subestimación pública inicial de la gravedad del desastre.</p><br><p>⚠ Continuación de su agenda durante el desastre, con el objetivo de colocar a personal a dedo en el canal de À Punt.</p>'
       },
       'Gobierno Central': {
-        title: 'Gobierno Central (Ministerio de Defensa, UME): 18%',
-        text: 'Respuesta tardía y en cantidad insuficiente de la Unidad Militar de Emergencias (UME). Fallos administrativos históricos en la ejecución de proyectos hidráulicos esenciales (encauzamientos, presas). Falta de coordinación efectiva con autoridades autonómicas en momentos clave. Refleja una responsabilidad significativa derivada de fallos en coordinación y gestión operativa inmediata y preventiva.'
+        title: 'Gobierno Central (Presidencia, Ministerio del Interior, Ministerio de Defensa, Ministerio para la Transición Ecológica y UME): 24%',
+        text: '<p>⚠ No se declaró el Nivel 3 de emergencia ni el estado de alarma pese a la gravedad de la tragedia. Pedro Sánchez regresó de la India el 30 de octubre, aunque ya el 29 había desaparecidos por la riada y se retrasó en la actuación inmediata (Art. 23 de la ley 17/2015).</p><br><p>⚠ El Ministerio de Defensa se retrasó en la movilización de la UME y el Ejército (Ante el argumento de "el ejército solo servía para limpiar, daba igual si venía pronto o tarde": Aquí murieron personas en burbujas de aire o bajo vehículos, además, se necesitaba control en las calles y distribución de recursos básicos, como agua potable).</p><br><p>⚠ Rechazo de ayuda internacional, como la ofrecida por Francia, entre otros, por decisión del Ministerio del Interior.</p><br><p>⚠ Prioridad de la ejecutiva central ajena al desastre, como el nombramiento a dedo de consejeros de RTVE.</p><br><p>⚠ Lentitud en la entrega de ayudas directas y negativa a indemnizar justamente a agricultores por expropiaciones.</p><br><p>⚠ Inversión en campañas políticas y redes sociales en lugar de ayuda directa desde el primer día.</p>'
       },
-      'Protección Civil': {
-        title: 'Protección Civil y técnicos regionales: 8%',
-        text: 'Retraso claro en activar protocolos locales específicos. Errores graves en comunicación interna sobre riesgos en tiempo real. Falta de decisión y eficacia en la interpretación de datos técnicos recibidos de AEMET y CHJ. Responsabilidad moderada, pero clara, por no haber cumplido adecuadamente su papel en tiempo crítico.'
-      },
-      'Autoridades locales': {
-        title: 'Autoridades locales (Ayuntamientos): 4%',
-        text: 'Insuficiente preparación y actualización de planes locales de emergencia. Baja capacidad de respuesta inmediata con recursos propios. Dependencia absoluta y pasiva ante la gestión de autoridades superiores. Aunque menos culpables directamente, tienen una responsabilidad residual clara en la gestión inmediata y local del evento.'
+      'Gobiernos Autonómicos anteriores': {
+        title: 'Gobiernos Autonómicos anteriores (Camps, Fabra, Puig): 17%',
+        text: '<p>⚠ Incumplimiento reiterado del PATRICOVA desde 2007 hasta 2023.</p><br><p>⚠ No ejecución sistemática de infraestructuras críticas previstas (Barranco del Poyo, Río Magro, protección industrial y urbana).</p><br><p>⚠ Desatención constante a advertencias técnicas previas.</p>'
       },
       'AEMET y CHJ': {
-        title: 'AEMET y CHJ (prevención, Forata, radar): 10%',
-        text: 'Gestión cuestionable y polémica en apertura de compuertas en la presa de Forata. Posible falta de mantenimiento preventivo adecuado en cauces y barrancos. Reparación tardía y cuestionable funcionamiento del radar meteorológico. Caudalímetros inutilizados que dificultaron la interpretación y previsión técnica inmediata. Este porcentaje se justifica por responsabilidades técnicas preventivas y operativas que contribuyeron a la magnitud del desastre.'
+        title: 'AEMET y CHJ (gestión técnica y preventiva): 14%',
+        text: '<p>⚠ Polémica gestión operativa en la apertura de compuertas de Forata al 100%, agravando inundaciones locales.</p><br><p>⚠ Insuficiente mantenimiento preventivo en cauces y barrancos (vegetación acumulada).</p><br><p>⚠ Problemas previos y sospechosos en la reparación y operación del radar meteorológico.</p><br><p>⚠ Caudalímetros inutilizados o mal gestionados que dificultaron previsiones técnicas.</p>'
       },
-      'Factores naturales': {
-        title: 'Factores naturales (magnitud excepcional DANA): 5%',
-        text: 'Fenómeno meteorológico excepcional, aunque previsible en cierto grado. Intensidad extraordinaria que complicó ligeramente la predicción exacta del evento. Este porcentaje bajo pero significativo refleja el factor natural inevitable de la catástrofe, pero claramente mitigable por una mejor gestión previa y durante el evento.'
+      'Autoridades locales': {
+        title: 'Autoridades locales (Ayuntamientos): 12%',
+        text: '<p>⚠ Preparación insuficiente y planes de emergencia obsoletos.</p><br><p>⚠ Limitada respuesta inmediata y proactiva con recursos locales.</p><br><p>⚠ Dependencia pasiva excesiva respecto a niveles administrativos superiores.</p><br><p>⚠ Falta crítica de comunicación entre municipios cercanos, como en el caso evidente de Torrent y Paiporta, donde las alertas no fueron transmitidas eficazmente. En Torrent, padres recibieron notificaciones para recoger a sus hijos del colegio a las 12:30, lo que levanta sospechas sobre por qué esta información no llegó a Paiporta a tiempo para actuar eficazmente.</p><br><p>⚠ Episodios de tensión y mala gestión post-DANA en plenos municipales específicos.</p>'
+      },
+      'Protección Civil': {
+        title: 'Protección Civil y Técnicos Regionales: 8%',
+        text: '<p>⚠ Retraso evidente en activar protocolos específicos.</p><br><p>⚠ Graves errores en comunicación interna del riesgo en tiempo real.</p><br><p>⚠ Falta de decisión y agilidad en la interpretación de datos técnicos (AEMET y CHJ).</p>'
       }
     };
 
@@ -284,14 +273,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (selectedItem) {
         // Obtener el nombre de la zona (no el porcentaje)
         const value = data.getValue(selectedItem.row, 0);
-        const chartTextBox = document.getElementById('chartTextBox');
         const modalTitle = document.getElementById('chartModalTitle');
         const modalText = document.getElementById('chartModalText');
         
         // Actualizar los textos con los datos correspondientes
         if (chartTexts[value]) {
-          modalTitle.textContent = chartTexts[value].title;
-          modalText.textContent = chartTexts[value].text;
+          modalTitle.innerHTML = chartTexts[value].title;
+          modalText.innerHTML = chartTexts[value].text;
         }
 
         // Deseleccionar después de mostrar la información
@@ -301,21 +289,19 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Asegurarse de que el contenedor del texto esté visible
-    const chartTextBox = document.getElementById('chartTextBox');
-    if (chartTextBox) {
-      chartTextBox.style.display = 'block';
-    }
-
+    // Agregar el listener para los clicks
     google.visualization.events.addListener(chart, 'select', selectHandler);
+
+    // Dibujar la gráfica inicial
+    chart.draw(data, options);
     
     // Inicializar con el primer texto
     const firstKey = Object.keys(chartTexts)[0];
     if (firstKey) {
       const modalTitle = document.getElementById('chartModalTitle');
       const modalText = document.getElementById('chartModalText');
-      modalTitle.textContent = chartTexts[firstKey].title;
-      modalText.textContent = chartTexts[firstKey].text;
+      modalTitle.innerHTML = chartTexts[firstKey].title;
+      modalText.innerHTML = chartTexts[firstKey].text;
     }
 
     // Función para actualizar el tamaño
@@ -417,33 +403,84 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   init();
-});
 
-// Gestión de cookies
-function initCookieBanner() {
+  // Fix dropup functionality for manifesto and print buttons
+  const dropups = document.querySelectorAll('.dropup');
+  dropups.forEach(dropup => {
+    const button = dropup.querySelector('.modal-button');
+    const content = dropup.querySelector('.dropup-content');
+
+    if (button && content) {
+      button.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        // Close other dropups
+        dropups.forEach(otherDropup => {
+          const otherContent = otherDropup.querySelector('.dropup-content');
+          if (otherContent !== content) {
+            otherContent.classList.remove('active');
+          }
+        });
+
+        // Toggle current dropup
+        content.classList.toggle('active');
+      });
+    }
+  });
+
+  // Close dropups when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.dropup')) {
+      dropups.forEach(dropup => {
+        const content = dropup.querySelector('.dropup-content');
+        content.classList.remove('active');
+      });
+    }
+  });
+
+  // Close dropups with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      dropups.forEach(dropup => {
+        const content = dropup.querySelector('.dropup-content');
+        content.classList.remove('active');
+      });
+    }
+  });
+
+  // Ensure cookie banner is hidden initially
   const cookieBanner = document.getElementById('cookieBanner');
+  if (cookieBanner) {
+    cookieBanner.style.transform = 'translateX(-50%) translateY(100%)';
+    cookieBanner.style.opacity = '0';
+    cookieBanner.style.visibility = 'hidden';
+  }
+
+  // Show cookie banner only if preferences are not set
+  const cookiePreferences = localStorage.getItem('cookiePreferences');
+  if (!cookiePreferences) {
+    setTimeout(() => {
+      cookieBanner.classList.add('show');
+      cookieBanner.style.opacity = '1';
+      cookieBanner.style.visibility = 'visible';
+    }, 1000);
+  }
+
+  // Save cookie preferences and hide banner
+  function saveCookiePreferences(preferences) {
+    localStorage.setItem('cookiePreferences', JSON.stringify(preferences));
+    cookieBanner.classList.remove('show');
+    cookieBanner.style.opacity = '0';
+    cookieBanner.style.visibility = 'hidden';
+    cookieBanner.style.transform = 'translateX(-50%) translateY(100%)';
+  }
+
+  // Event listeners for cookie buttons
   const acceptAllBtn = document.getElementById('acceptAllCookies');
   const acceptSelectedBtn = document.getElementById('acceptSelectedCookies');
   const rejectBtn = document.getElementById('rejectCookies');
   const analyticsCb = document.getElementById('analyticsCookies');
   const marketingCb = document.getElementById('marketingCookies');
-
-  function saveCookiePreferences(preferences) {
-    localStorage.setItem('cookiePreferences', JSON.stringify(preferences));
-    cookieBanner.classList.remove('show');
-    
-    // Activar/desactivar servicios según preferencias
-    if (preferences.analytics) {
-      // Activar Google Analytics, etc.
-    }
-    if (preferences.marketing) {
-      // Activar píxeles de marketing, etc.
-    }
-  }
-
-  if (!localStorage.getItem('cookiePreferences')) {
-    setTimeout(() => cookieBanner.classList.add('show'), 1000);
-  }
 
   acceptAllBtn.addEventListener('click', () => {
     saveCookiePreferences({
@@ -468,7 +505,7 @@ function initCookieBanner() {
       marketing: false
     });
   });
-}
+});
 
 // Inicializar el banner de cookies cuando se carga la página
 document.addEventListener('DOMContentLoaded', initCookieBanner);

@@ -12,6 +12,7 @@
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='64' height='64'>
       <text y='20' font-size='18' text-anchor='middle' x='50%'>📰</text>
   </svg>" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Fallback para favicon -->
   <meta name="theme-color" content="#333333">
   <meta name="description" content="El Periódico del Pueblo - Noticias y actualidad">
   <link rel="preload" href="styles.css" as="style">
@@ -76,26 +77,10 @@
     <section class="volumes-section">
       <div class="container">
         <div class="volumes-container">
-          <div class="volumes-header">
-            <div class="volumes-title-group">
-              <h2 class="volumes-title">Lee aquí el Periódico del Pueblo</h2>
-              <p class="volumes-description">Descubre nuestra investigación periodística sobre la DANA. Cada volumen contiene análisis detallados y testimonios directos.</p>
-            </div>
-            <div class="volumes-search">
-              <div class="dropdown" id="dropdownCard">
-                <button class="dropdown-toggle volumes-toggle" id="dropdownBtn" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenu">
-                  <i class="fas fa-search"></i>
-                  <span>Buscar volumen</span>
-                  <i class="fas fa-chevron-down"></i>
-                </button>
-                <ul class="dropdown-menu" id="dropdownMenu" role="menu">
-                  <li><a href="#volumen01" class="dropdown-item" data-scroll>Volumen 01 - 21 Feb 2025</a></li>
-                  <li><a href="#volumen02" class="dropdown-item" data-scroll>Volumen 02 - 22 Feb 2025</a></li>
-                  <li><a href="#volumen03" class="dropdown-item" data-scroll>Volumen 03 - 23 Feb 2025</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <h2 class="chart-main-title">Lee aquí el Periódico del Pueblo</h2>
+          <p class="chart-main-description">
+            Descubre nuestra investigación periodística sobre la DANA. Cada volumen contiene análisis detallados y testimonios directos.
+          </p>
           
           <div class="volumes-grid">
             <!-- Volumen 01 -->
@@ -106,6 +91,8 @@
                     src="https://www.youtube.com/embed/5iU9fgIyoEM" 
                     title="Video del Volumen 01"
                     loading="lazy"
+                    sandbox="allow-same-origin allow-scripts allow-popups"
+                    referrerpolicy="no-referrer"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
                   </iframe>
@@ -144,6 +131,8 @@
                     src="https://www.youtube.com/embed/8SEwDxn9x8g" 
                     title="Video del Volumen 02"
                     loading="lazy"
+                    sandbox="allow-same-origin allow-scripts allow-popups"
+                    referrerpolicy="no-referrer"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
                   </iframe>
@@ -182,6 +171,8 @@
                     src="https://www.youtube.com/embed/7M6K8ogtlys" 
                     title="Video del Volumen 03"
                     loading="lazy"
+                    sandbox="allow-same-origin allow-scripts allow-popups"
+                    referrerpolicy="no-referrer"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
                   </iframe>
@@ -221,7 +212,7 @@
   <!-- ===== BOTONES FLOTANTES (MANIFIESTO / IMPRIMIR) ===== -->
   <div class="print-button-container">
     <div class="dropup">
-        <button class="modal-button" id="manifestoButton">
+        <button class="modal-button" id="manifestoButton" aria-label="Abrir manifiesto" role="button">
             Manifiesto
         </button>
         <div class="dropup-content">
