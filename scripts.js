@@ -448,59 +448,60 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Verificar si ya hay preferencias guardadas al cargar la página
-  const cookiePreferences = localStorage.getItem('cookiePreferences');
-  const cookieBanner = document.getElementById('cookieBanner');
+  // Función mejorada para manejar cookies
+  function handleCookieConsent() {
+    const cookieBanner = document.getElementById('cookieBanner');
+    const acceptAllBtn = document.getElementById('acceptAllCookies');
+    const acceptSelectedBtn = document.getElementById('acceptSelectedCookies');
+    const rejectBtn = document.getElementById('rejectCookies');
+    const analyticsCb = document.getElementById('analyticsCookies');
+    const marketingCb = document.getElementById('marketingCookies');
 
-  // Si ya hay preferencias guardadas, no mostrar el banner
-  if (cookiePreferences) {
-    cookieBanner.style.display = 'none';
-  } else {
-    // Solo mostrar el banner si no hay preferencias guardadas
-    setTimeout(() => {
-      cookieBanner.classList.add('show');
-    }, 1000);
+    // Verificar si ya hay preferencias guardadas
+    const cookiePreferences = localStorage.getItem('cookiePreferences');
+    
+    if (!cookiePreferences) {
+      setTimeout(() => {
+        cookieBanner.classList.add('show');
+      }, 1000);
+    }
+
+    function saveCookiePreferences(preferences) {
+      localStorage.setItem('cookiePreferences', JSON.stringify(preferences));
+      cookieBanner.classList.remove('show');
+      
+      setTimeout(() => {
+        cookieBanner.style.display = 'none';
+      }, 300);
+    }
+
+    acceptAllBtn.addEventListener('click', () => {
+      saveCookiePreferences({
+        necessary: true,
+        analytics: true,
+        marketing: true
+      });
+    });
+
+    acceptSelectedBtn.addEventListener('click', () => {
+      saveCookiePreferences({
+        necessary: true,
+        analytics: analyticsCb.checked,
+        marketing: marketingCb.checked
+      });
+    });
+
+    rejectBtn.addEventListener('click', () => {
+      saveCookiePreferences({
+        necessary: true,
+        analytics: false,
+        marketing: false
+      });
+    });
   }
 
-  // Función mejorada para guardar preferencias
-  function saveCookiePreferences(preferences) {
-    localStorage.setItem('cookiePreferences', JSON.stringify(preferences));
-    cookieBanner.classList.remove('show');
-    setTimeout(() => {
-      cookieBanner.style.display = 'none';
-    }, 300); // Esperar a que termine la animación
-  }
-
-  // Event listeners for cookie buttons
-  const acceptAllBtn = document.getElementById('acceptAllCookies');
-  const acceptSelectedBtn = document.getElementById('acceptSelectedCookies');
-  const rejectBtn = document.getElementById('rejectCookies');
-  const analyticsCb = document.getElementById('analyticsCookies');
-  const marketingCb = document.getElementById('marketingCookies');
-
-  acceptAllBtn.addEventListener('click', () => {
-    saveCookiePreferences({
-      necessary: true,
-      analytics: true,
-      marketing: true
-    });
-  });
-
-  acceptSelectedBtn.addEventListener('click', () => {
-    saveCookiePreferences({
-      necessary: true,
-      analytics: analyticsCb.checked,
-      marketing: marketingCb.checked
-    });
-  });
-
-  rejectBtn.addEventListener('click', () => {
-    saveCookiePreferences({
-      necessary: true,
-      analytics: false,
-      marketing: false
-    });
-  });
+  // Inicializar el manejo de cookies cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', handleCookieConsent);
 });
 
 // Inicializar el banner de cookies cuando se carga la página
