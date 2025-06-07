@@ -448,31 +448,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Ensure cookie banner is hidden initially
-  const cookieBanner = document.getElementById('cookieBanner');
-  if (cookieBanner) {
-    cookieBanner.style.transform = 'translateX(-50%) translateY(100%)';
-    cookieBanner.style.opacity = '0';
-    cookieBanner.style.visibility = 'hidden';
-  }
-
-  // Show cookie banner only if preferences are not set
+  // Verificar si ya hay preferencias guardadas al cargar la página
   const cookiePreferences = localStorage.getItem('cookiePreferences');
-  if (!cookiePreferences) {
+  const cookieBanner = document.getElementById('cookieBanner');
+
+  // Si ya hay preferencias guardadas, no mostrar el banner
+  if (cookiePreferences) {
+    cookieBanner.style.display = 'none';
+  } else {
+    // Solo mostrar el banner si no hay preferencias guardadas
     setTimeout(() => {
       cookieBanner.classList.add('show');
-      cookieBanner.style.opacity = '1';
-      cookieBanner.style.visibility = 'visible';
     }, 1000);
   }
 
-  // Save cookie preferences and hide banner
+  // Función mejorada para guardar preferencias
   function saveCookiePreferences(preferences) {
     localStorage.setItem('cookiePreferences', JSON.stringify(preferences));
     cookieBanner.classList.remove('show');
-    cookieBanner.style.opacity = '0';
-    cookieBanner.style.visibility = 'hidden';
-    cookieBanner.style.transform = 'translateX(-50%) translateY(100%)';
+    setTimeout(() => {
+      cookieBanner.style.display = 'none';
+    }, 300); // Esperar a que termine la animación
   }
 
   // Event listeners for cookie buttons
