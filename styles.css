@@ -1921,6 +1921,7 @@ main {
 .whatsapp-button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.8rem;
     background: var(--whatsapp-green);
     color: white;
@@ -2375,7 +2376,7 @@ main {
   }
 }
 
-/* Ajustes adicionales para pantallas muy pequeñas */
+/* Ajustes para pantallas muy pequeñas */
 @media (max-width: 480px) {
   .statistics-card {
     padding: 0.75rem;
@@ -2982,4 +2983,9 @@ main {
   content: '•';
   color: var(--accent);
   font-size: 1.5rem;
+}
+
+.interviews-section {
+  background: var(--color-bg);
+  padding: calc(var(--section-spacing) * 0.75) 0;
 }
