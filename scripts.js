@@ -181,52 +181,53 @@ document.addEventListener("DOMContentLoaded", () => {
   google.charts.setOnLoadCallback(drawStatisticsChart);
 
   function drawStatisticsChart() {
+    // Todos los fragmentos iguales (valor 1), sin porcentajes en tooltip
     const chartData = [
-      ['Área', 'Porcentaje', { role: 'tooltip' }],
-      ['Gobierno Autonómico Actual', 25, 'Gobierno Autonómico Actual: 25%'],
-      ['Gobierno Central', 24, 'Gobierno Central: 24%'],
-      ['Gobiernos Autonómicos anteriores', 17, 'Gobiernos Autonómicos anteriores: 17%'],
-      ['AEMET y CHJ', 14, 'AEMET y CHJ: 14%'],
-      ['Autoridades locales', 12, 'Autoridades locales: 12%'],
-      ['Protección Civil', 8, 'Protección Civil: 8%']
+      ['Área', 'Valor', { role: 'tooltip' }],
+      ['Gobierno Autonómico Actual', 1, 'Gobierno Autonómico Actual'],
+      ['Gobierno Central', 1, 'Gobierno Central'],
+      ['Gobiernos Autonómicos anteriores', 1, 'Gobiernos Autonómicos anteriores'],
+      ['AEMET y CHJ', 1, 'AEMET y CHJ'],
+      ['Autoridades locales', 1, 'Autoridades locales'],
+      ['Protección Civil', 1, 'Protección Civil']
     ];
 
+    // Elimina los % de los títulos y textos
     const chartTexts = {
       'Gobierno Autonómico Actual': {
-        title: 'Gobierno Autonómico Actual (Carlos Mazón): 25%',
+        title: 'Gobierno Autonómico Actual (Carlos Mazón)',
         text: '<p>⚠ Retraso crítico en activación del nivel máximo de alerta (Nivel 3).</p><br><p>⚠ Grave fallo en la comunicación de emergencias (ES-ALERT).</p><br><p>⚠ Descoordinación en momentos cruciales (CECOPI activado tarde, liderazgo difuso).</p><br><p>⚠ Subestimación pública inicial de la gravedad del desastre.</p><br><p>⚠ Continuación de su agenda durante el desastre, con el objetivo de colocar a personal a dedo en el canal de À Punt.</p>'
       },
       'Gobierno Central': {
-        title: 'Gobierno Central (Presidencia, Ministerio del Interior, Ministerio de Defensa, Ministerio para la Transición Ecológica y UME): 24%',
+        title: 'Gobierno Central (Presidencia, Ministerio del Interior, Ministerio de Defensa, Ministerio para la Transición Ecológica y UME)',
         text: '<p>⚠ No se declaró el Nivel 3 de emergencia ni el estado de alarma pese a la gravedad de la tragedia. Pedro Sánchez regresó de la India el 30 de octubre, aunque ya el 29 había desaparecidos por la riada y se retrasó en la actuación inmediata (Art. 23 de la ley 17/2015).</p><br><p>⚠ El Ministerio de Defensa se retrasó en la movilización de la UME y el Ejército (Ante el argumento de "el ejército solo servía para limpiar, daba igual si venía pronto o tarde": Aquí murieron personas en burbujas de aire o bajo vehículos, además, se necesitaba control en las calles y distribución de recursos básicos, como agua potable).</p><br><p>⚠ Rechazo de ayuda internacional, como la ofrecida por Francia, entre otros, por decisión del Ministerio del Interior.</p><br><p>⚠ Prioridad de la ejecutiva central ajena al desastre, como el nombramiento a dedo de consejeros de RTVE.</p><br><p>⚠ Lentitud en la entrega de ayudas directas y negativa a indemnizar justamente a agricultores por expropiaciones.</p><br><p>⚠ Inversión en campañas políticas y redes sociales en lugar de ayuda directa desde el primer día.</p>'
       },
       'Gobiernos Autonómicos anteriores': {
-        title: 'Gobiernos Autonómicos anteriores (Camps, Fabra, Puig): 17%',
+        title: 'Gobiernos Autonómicos anteriores (Camps, Fabra, Puig)',
         text: '<p>⚠ Incumplimiento reiterado del PATRICOVA desde 2007 hasta 2023.</p><br><p>⚠ No ejecución sistemática de infraestructuras críticas previstas (Barranco del Poyo, Río Magro, protección industrial y urbana).</p><br><p>⚠ Desatención constante a advertencias técnicas previas.</p>'
       },
       'AEMET y CHJ': {
-        title: 'AEMET y CHJ (gestión técnica y preventiva): 14%',
+        title: 'AEMET y CHJ (gestión técnica y preventiva)',
         text: '<p>⚠ Polémica gestión operativa en la apertura de compuertas de Forata al 100%, agravando inundaciones locales.</p><br><p>⚠ Insuficiente mantenimiento preventivo en cauces y barrancos (vegetación acumulada).</p><br><p>⚠ Problemas previos y sospechosos en la reparación y operación del radar meteorológico.</p><br><p>⚠ Caudalímetros inutilizados o mal gestionados que dificultaron previsiones técnicas.</p>'
       },
       'Autoridades locales': {
-        title: 'Autoridades locales (Ayuntamientos): 12%',
+        title: 'Autoridades locales (Ayuntamientos)',
         text: '<p>⚠ Preparación insuficiente y planes de emergencia obsoletos.</p><br><p>⚠ Limitada respuesta inmediata y proactiva con recursos locales.</p><br><p>⚠ Dependencia pasiva excesiva respecto a niveles administrativos superiores.</p><br><p>⚠ Falta crítica de comunicación entre municipios cercanos, como en el caso evidente de Torrent y Paiporta, donde las alertas no fueron transmitidas eficazmente. En Torrent, padres recibieron notificaciones para recoger a sus hijos del colegio a las 12:30, lo que levanta sospechas sobre por qué esta información no llegó a Paiporta a tiempo para actuar eficazmente.</p><br><p>⚠ Episodios de tensión y mala gestión post-DANA en plenos municipales específicos.</p>'
       },
       'Protección Civil': {
-        title: 'Protección Civil y Técnicos Regionales: 8%',
+        title: 'Protección Civil y Técnicos Regionales',
         text: '<p>⚠ Retraso evidente en activar protocolos específicos.</p><br><p>⚠ Graves errores en comunicación interna del riesgo en tiempo real.</p><br><p>⚠ Falta de decisión y agilidad en la interpretación de datos técnicos (AEMET y CHJ).</p>'
       }
     };
 
     const data = google.visualization.arrayToDataTable(chartData);
     const colors = [
-      '#607D8B', // Gris azulado medio para Gobierno Autonómico Actual
-      '#78909C', // Gris azulado claro para Gobiernos anteriores
-      '#90A4AE', // Gris más claro para Gobierno Central
-      '#B0BEC5', // Gris muy claro para Protección Civil
-      '#CFD8DC', // Gris clarísimo para Autoridades locales
-      '#ECEFF1', // Gris casi blanco para AEMET y CHJ
-      '#F5F7F8'  // Gris blanquecino para Factores naturales
+      '#607D8B',
+      '#78909C',
+      '#90A4AE',
+      '#B0BEC5',
+      '#CFD8DC',
+      '#ECEFF1'
     ];
 
     const options = {
@@ -250,14 +251,14 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       width: '100%',
       height: '100%',
-      pieSliceText: 'percentage',
+      pieSliceText: 'none', // <-- Oculta los textos internos de los fragmentos
       pieSliceTextStyle: {
         fontSize: 14,
-        color: '#ffffff', // Asegurando que el color del texto sea blanco
-        fontFamily: 'Inter' // Añadiendo la fuente para consistencia
+        color: '#ffffff',
+        fontFamily: 'Inter'
       },
-      tooltip: { 
-        text: 'percentage',
+      tooltip: {
+        text: 'label', // Solo muestra el título al pasar el ratón
         textStyle: {
           fontSize: 13,
           fontFamily: 'Inter'
@@ -387,6 +388,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Efecto sticky scroll para la navbar
+  document.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      document.body.classList.add('scrolled');
+    } else {
+      document.body.classList.remove('scrolled');
+    }
+  });
+
   // Inicialización con manejo de errores
   const init = () => {
     try {
@@ -446,64 +456,6 @@ document.addEventListener("DOMContentLoaded", () => {
         content.classList.remove('active');
       });
     }
-  });
-
-  // Ensure cookie banner is hidden initially
-  const cookieBanner = document.getElementById('cookieBanner');
-  if (cookieBanner) {
-    cookieBanner.style.transform = 'translateX(-50%) translateY(100%)';
-    cookieBanner.style.opacity = '0';
-    cookieBanner.style.visibility = 'hidden';
-  }
-
-  // Show cookie banner only if preferences are not set
-  const cookiePreferences = localStorage.getItem('cookiePreferences');
-  if (!cookiePreferences) {
-    setTimeout(() => {
-      cookieBanner.classList.add('show');
-      cookieBanner.style.opacity = '1';
-      cookieBanner.style.visibility = 'visible';
-    }, 1000);
-  }
-
-  // Save cookie preferences and hide banner
-  function saveCookiePreferences(preferences) {
-    localStorage.setItem('cookiePreferences', JSON.stringify(preferences));
-    cookieBanner.classList.remove('show');
-    cookieBanner.style.opacity = '0';
-    cookieBanner.style.visibility = 'hidden';
-    cookieBanner.style.transform = 'translateX(-50%) translateY(100%)';
-  }
-
-  // Event listeners for cookie buttons
-  const acceptAllBtn = document.getElementById('acceptAllCookies');
-  const acceptSelectedBtn = document.getElementById('acceptSelectedCookies');
-  const rejectBtn = document.getElementById('rejectCookies');
-  const analyticsCb = document.getElementById('analyticsCookies');
-  const marketingCb = document.getElementById('marketingCookies');
-
-  acceptAllBtn.addEventListener('click', () => {
-    saveCookiePreferences({
-      necessary: true,
-      analytics: true,
-      marketing: true
-    });
-  });
-
-  acceptSelectedBtn.addEventListener('click', () => {
-    saveCookiePreferences({
-      necessary: true,
-      analytics: analyticsCb.checked,
-      marketing: marketingCb.checked
-    });
-  });
-
-  rejectBtn.addEventListener('click', () => {
-    saveCookiePreferences({
-      necessary: true,
-      analytics: false,
-      marketing: false
-    });
   });
 });
 
